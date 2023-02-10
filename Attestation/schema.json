@@ -8,14 +8,6 @@
   "license": "https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
   "type": "object",
   "properties": {
-    "@context": {
-      "description": "Property. Defines semantic context of the Verifiable Attestation",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
-    },
     "id": {
       "description": "Property. Defines unique identifier of the Verifiable Attestation",
       "type": "string",
@@ -187,7 +179,6 @@
     }
   },
   "required": [
-    "@context",
     "id",
     "type",
     "issuer",

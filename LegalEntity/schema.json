@@ -7,7 +7,9 @@
   "type": "object",
   "derivedFrom": "https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-vid/legal-entity/2022-11/schema.json",
   "license": "https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
-  "required": ["credentialSubject"],
+  "required": [
+    "credentialSubject"
+  ],
   "allOf": [
     {
       "$ref": "https://raw.githubusercontent.com/smart-data-models/incubated/master/dataModel.VerifiableCredentials/VerifiableCredentials-schema.json"

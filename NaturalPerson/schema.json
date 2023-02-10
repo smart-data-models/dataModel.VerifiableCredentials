@@ -16,6 +16,7 @@
     },
     {
       "properties": {
+      "properties": {
         "credentialSubject": {
           "description": "Property. Defines additional information about the subject that is described by the Verifiable ID",
           "type": "object",
