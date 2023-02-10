@@ -1,0 +1,181 @@
+Attestation:
+  description: Schema of an EBSI Verifiable Attestation
+  properties:
+    @context:
+      description: Defines semantic context of the Verifiable Attestation
+      items:
+        format: uri
+        type: string
+      type: array
+      x-ngsi:
+        type: Property
+    credentialSchema:
+      description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based
+      properties:
+        id:
+          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based
+          format: uri
+          type: string
+        type:
+          description: Property. Defines credential schema type
+          enum:
+            - FullJsonSchemaValidator2021
+          type: string
+      required:
+        - id
+        - type
+      type: object
+      x-ngsi:
+        type: Property
+    credentialStatus:
+      description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'
+      properties:
+        id:
+          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity
+          format: uri
+          type: string
+        statusListCredential:
+          description: Property. URL referencing the StatusList2021Credential
+          format: uri
+          type: string
+        statusListIndex:
+          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status
+          type: string
+        statusPurpose:
+          description: Property. Purpose of the status entry
+          enum:
+            - revocation
+            - suspension
+          type: string
+        type:
+          description: Property. Defines the Verifiable Credential status type
+          type: string
+      required:
+        - id
+        - type
+      type: object
+      x-ngsi:
+        type: Property
+    credentialSubject:
+      description: Defines information about the subject that is described by the Verifiable Attestation
+      properties:
+        id:
+          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation
+          format: uri
+          type: string
+      type: object
+      x-ngsi:
+        type: Property
+    evidence:
+      description: Contains information about the process which resulted in the issuance of the Verifiable Attestation
+      items:
+        properties:
+          id:
+            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'
+            type: string
+          type:
+            description: Property. Defines the evidence type
+            items:
+              type: string
+            type: array
+        required:
+          - id
+          - type
+        type: object
+      type: array
+      x-ngsi:
+        type: Property
+    expirationDate:
+      description: 'Defines the date and time, when the Verifiable Attestation expires'
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    id:
+      description: Defines unique identifier of the Verifiable Attestation
+      format: uri
+      type: string
+      x-ngsi:
+        type: Property
+    issuanceDate:
+      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    issued:
+      description: Defines when the Verifiable Attestation was issued
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    issuer:
+      description: Defines the issuer of the Verifiable Attestation
+      format: uri
+      type: string
+      x-ngsi:
+        type: Property
+    proof:
+      description: Contains information about the proof
+      properties:
+        created:
+          description: 'Property. Defines the date and time, when the proof has been created'
+          format: date-time
+          type: string
+        jws:
+          description: Property. Defines the proof value in JWS format
+          type: string
+        proofPurpose:
+          description: Property. Defines the purpose of the proof
+          type: string
+        type:
+          description: Property. Defines the proof type
+          type: string
+        verificationMethod:
+          description: Property. Contains information about the verification method / proof mechanisms
+          type: string
+      required:
+        - type
+        - proofPurpose
+        - created
+        - verificationMethod
+        - jws
+      type: object
+      x-ngsi:
+        type: Property
+    type:
+      description: Defines the Verifiable Credential type
+      items:
+        type: string
+      type: array
+      x-ngsi:
+        type: Property
+    validFrom:
+      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+    validUntil:
+      description: 'Defines the date and time, when the Verifiable Attestation expires'
+      format: date-time
+      type: string
+      x-ngsi:
+        type: Property
+  required:
+    - @context
+    - id
+    - type
+    - issuer
+    - issuanceDate
+    - issued
+    - validFrom
+    - credentialSubject
+    - credentialSchema
+  type: object
+  x-derived-from: https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-attestation/2022-11/schema.json
+  x-disclaimer: 'Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program'
+  x-license-url: https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/Attestation/LICENSE.md
+  x-model-schema: ""
+  x-model-tags: 'EBSI, Verifiable Credentials'
+  x-version: 0.0.1
