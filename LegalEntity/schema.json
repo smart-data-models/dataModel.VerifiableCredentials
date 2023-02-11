@@ -12,7 +12,7 @@
   ],
   "allOf": [
     {
-      "$ref": "https://raw.githubusercontent.com/smart-data-models/incubated/master/dataModel.VerifiableCredentials/VerifiableCredentials-schema.json"
+      "$ref": "https://raw.githubusercontent.com/smart-data-models/dataModel.VerifiableCredentials/master/VerifiableCredentials-schema.json"
     },
     {
       "properties": {
