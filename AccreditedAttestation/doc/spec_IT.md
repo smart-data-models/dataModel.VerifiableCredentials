@@ -7,18 +7,19 @@
 [documento generato automaticamente](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Descrizione globale: **Schema di un attestato verificabile accreditato EBSI**  
+versione: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Elenco delle proprietà  
 
-<sup><sub>[*] Se non c'è un tipo in un attributo è perché potrebbe avere diversi tipi o diversi formati/modelli</sub></sup>.  
-<!-- /30-PropertiesList -->  
+- `credentialSchema`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  - `credentialStatus`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  - `credentialSubject`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  - `evidence`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer`: Definisce l'emittente dell'Attestazione verificabile.  - `proof`: Contiene informazioni sulla prova  - `termsOfUse`: Contiene i termini in base ai quali è stato rilasciato l'Attestato Verificabile Accreditato.  - `type`: Definisce il tipo di credenziale verificabile  - `validFrom`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Proprietà richieste  
-- Nessuna proprietà richiesta  <!-- /35-RequiredProperties -->  
+<!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Modello di dati derivato da schemi json EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. È disponibile solo l'esempio dei dati collegati ai valori chiave  
+Modelli di dati derivati da schemi json EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. L'attributo @context è stato rimosso dalla definizione perché è obbligatorio in NGSI-LD e non deve essere documentato esplicitamente. È disponibile solo l'esempio nei dati collegati ai valori chiave  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Modello di dati descrizione delle proprietà  
@@ -30,12 +31,6 @@
 AccreditedAttestation:    
   description: Schema of an EBSI Accredited Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation. Check this when creating the verifiable attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -233,7 +228,6 @@ AccreditedAttestation:
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD normalizzato. Questo è compatibile con NGSI-v2 quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
 #### AccreditedAttestation Valori delle chiavi NGSI-LD Esempio  
 Ecco un esempio di AccreditedAttestation in formato JSON-LD come valori-chiave. Questo è compatibile con NGSI-LD quando si usa `options=keyValues` e restituisce i dati di contesto di una singola entità.  
-<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -267,7 +261,6 @@ AccreditedAttestation:
   }  
 }  
 ```  
-</details>  
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD normalizzato. Questo è compatibile con NGSI-LD quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -275,6 +268,3 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 Vedere [FAQ 10](https://smartdatamodels.org/index.php/faqs/) per ottenere una risposta su come gestire le unità di grandezza.  
 <!-- /95-Units -->  
-<!-- 97-LastFooter -->  
----  
-[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
