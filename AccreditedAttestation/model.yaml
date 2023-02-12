@@ -1,12 +1,6 @@
 AccreditedAttestation:
   description: Schema of an EBSI Accredited Verifiable Attestation
   properties:
-    @context:
-      description: Defines semantic context of the Verifiable Attestation. Check this when creating the verifiable attestation
-      items:
-        format: uri
-        type: string
-      type: array
     credentialSchema:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based
       properties:
