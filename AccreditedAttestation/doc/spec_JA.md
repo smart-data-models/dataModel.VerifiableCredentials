@@ -7,18 +7,19 @@
 [ドキュメント自動生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+グローバルな記述です。**EBSI 認定検証可能証明書のスキーマ**。  
+バージョン: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## プロパティ一覧  
 
-<sup><sub>[*] 属性にタイプがない場合、複数のタイプまたは異なるフォーマット/パターンを持つ可能性があるためです</sub></sup>。  
-<!-- /30-PropertiesList -->  
+- `credentialSchema`: 検証可能な認証が基づいているクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  - `credentialStatus`: 検証可能な証明の状態を確認する方法に関する情報を含む（RER（Revocation and Endorsement Registry）経由）。  - `credentialSubject`: 検証可能な証明書によって記述される対象者に関する情報を定義する。  - `evidence`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate`: 検証可能な証明書の有効期限が切れる日時を定義する。  - `id`: 検証可能な証明の一意の識別子を定義する。  - `issuanceDate`: 検証可能証明書が有効になる日時を定義する。  - `issued`: 検証可能証明書がいつ発行されたかを定義する。  - `issuer`: 検証可能証明書の発行者を定義する。  - `proof`: 証明に関する情報が記載されています  - `termsOfUse`: Accredited Verifiable Attestationの発行条件を含む。  - `type`: 検証可能なクレデンシャルタイプを定義する  - `validFrom`: 検証可能証明書が有効になる日時を定義する。  - `validUntil`: 検証可能証明書の有効期限を定義する。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 必要なプロパティ  
-- 必要なプロパティはありません  <!-- /35-RequiredProperties -->  
+<!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-EBSIのjsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.キーバリューのリンクデータの例のみ利用可能  
+EBSI jsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.context属性はNGSI-LDでは必須であり、明示的に文書化する必要がないため、定義から削除された。リンクデータのキーバリューの例のみ利用可能  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## プロパティのデータモデル記述  
@@ -30,12 +31,6 @@
 AccreditedAttestation:    
   description: Schema of an EBSI Accredited Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation. Check this when creating the verifiable attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -233,7 +228,6 @@ AccreditedAttestation:
 AccreditedAttestation を JSON-LD 形式で正規化した例は利用不可。オプションを使用しない場合のNGSI-v2との互換性があり、個々のエンティティのコンテキストデータを返す。  
 #### AccreditedAttestation NGSI-LD key-value Example  
 AccreditedAttestationをJSON-LD形式でkey-valuesにした例です。これは、`options=keyValues`を使用した場合にNGSI-LDと互換性があり、個々のエンティティのコンテキストデータが返されます。  
-<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -267,7 +261,6 @@ AccreditedAttestation:
   }  
 }  
 ```  
-</details>  
 AccreditedAttestation を JSON-LD 形式で正規化した例は存在しない。オプションを使用しない場合のNGSI-LDと互換性があり、個々のエンティティのコンテキストデータが返される。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -275,6 +268,3 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 マグニチュード単位の扱いについては、[FAQ 10](https://smartdatamodels.org/index.php/faqs/)を参照してください。  
 <!-- /95-Units -->  
-<!-- 97-LastFooter -->  
----  
-[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
