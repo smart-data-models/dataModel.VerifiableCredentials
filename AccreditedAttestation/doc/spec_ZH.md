@@ -7,18 +7,19 @@
 [文件自动生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+全球描述。**EBSI认可的可验证证明的格式**。  
+版本：0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ##属性列表  
 
-<sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
-<!-- /30-PropertiesList -->  
+- `credentialSchema`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject`: 定义了可验证证明所描述的主体的信息  - `evidence`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate`: 定义了可验证证明到期的日期和时间。  - `id`: 定义了可验证证明的唯一标识符  - `issuanceDate`: 定义日期和时间，当可验证的证明变得有效时。  - `issued`: 定义了可验证证明的签发时间  - `issuer`: 定义了可验证证明的签发者  - `proof`: 包含有关证明的信息  - `termsOfUse`: 包含签发经认可的可核查证明的条款  - `type`: 定义了可验证凭证的类型  - `validFrom`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
-- 没有要求的属性  <!-- /35-RequiredProperties -->  
+<!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-数据模型来源于EBSI的json schemas https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。只提供关键值链接数据的例子  
+源自EBSI json模式的数据模型https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。@context属性已从定义中删除，因为它在NGSI-LD中是强制性的，不需要明确记录。只有在关键值链接数据中才有这个例子  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## 数据模型的属性描述  
@@ -30,12 +31,6 @@
 AccreditedAttestation:    
   description: Schema of an EBSI Accredited Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation. Check this when creating the verifiable attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -233,7 +228,6 @@ AccreditedAttestation:
 不提供JSON-LD格式的AccreditedAttestation规范化的例子。当不使用选项时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
 #### AccreditedAttestation NGSI-LD key-values 示例  
 这里是一个以JSON-LD格式作为关键值的AccreditedAttestation的例子。当使用`options=keyValues`时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
-<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -267,7 +261,6 @@ AccreditedAttestation:
   }  
 }  
 ```  
-</details>  
 不提供JSON-LD格式的AccreditedAttestation规范化的例子。当不使用选项时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -275,6 +268,3 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 参见[常见问题10](https://smartdatamodels.org/index.php/faqs/)，以获得关于如何处理量级单位的答案。  
 <!-- /95-Units -->  
-<!-- 97-LastFooter -->  
----  
-[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
