@@ -7,6 +7,8 @@ Version: 0.0.1
 Schema of an EBSI Accredited Verifiable Attestation
 ### Specification
 
+Link to the [interactive specification](https://swagger.lab.fiware.org/?url=https://smart-data-models.github.io/dataModel.VerifiableCredentials/AccreditedAttestation/swagger.yaml)
+
 Link to the [specification](https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/AccreditedAttestation/doc/spec.md)
 
 Enlace a la [Especificación en español](https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/AccreditedAttestation/doc/spec_ES.md)
