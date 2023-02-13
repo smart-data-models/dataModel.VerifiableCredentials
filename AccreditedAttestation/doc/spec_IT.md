@@ -14,7 +14,8 @@
 
 ## Elenco delle proprietà  
 
-- `credentialSchema`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  - `credentialStatus`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  - `credentialSubject`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  - `evidence`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer`: Definisce l'emittente dell'Attestazione verificabile.  - `proof`: Contiene informazioni sulla prova  - `termsOfUse`: Contiene i termini in base ai quali è stato rilasciato l'Attestato Verificabile Accreditato.  - `type`: Definisce il tipo di credenziale verificabile  - `validFrom`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
+<sup><sub>[*] Se non c'è un tipo in un attributo è perché potrebbe avere diversi tipi o diversi formati/modelli</sub></sup>.  
+- `credentialSchema[object]`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  - `credentialStatus[object]`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  - `credentialSubject[object]`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  - `evidence[array]`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id[string]`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued[string]`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer[string]`: Definisce l'emittente dell'Attestazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  - `termsOfUse[array]`: Contiene i termini in base ai quali è stato rilasciato l'Attestato Verificabile Accreditato.  - `type[array]`: Definisce il tipo di credenziale verificabile  - `validFrom[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Proprietà richieste  
 <!-- /35-RequiredProperties -->  
@@ -228,6 +229,7 @@ AccreditedAttestation:
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD normalizzato. Questo è compatibile con NGSI-v2 quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
 #### AccreditedAttestation Valori delle chiavi NGSI-LD Esempio  
 Ecco un esempio di AccreditedAttestation in formato JSON-LD come valori-chiave. Questo è compatibile con NGSI-LD quando si usa `options=keyValues` e restituisce i dati di contesto di una singola entità.  
+<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -261,6 +263,7 @@ AccreditedAttestation:
   }  
 }  
 ```  
+</details>  
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD normalizzato. Questo è compatibile con NGSI-LD quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -268,3 +271,6 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 Vedere [FAQ 10](https://smartdatamodels.org/index.php/faqs/) per ottenere una risposta su come gestire le unità di grandezza.  
 <!-- /95-Units -->  
+<!-- 97-LastFooter -->  
+---  
+[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
