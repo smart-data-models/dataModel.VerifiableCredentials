@@ -15,7 +15,7 @@
 ##属性列表  
 
 <sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
-- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证的证明所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `termsOfUse[array]`: 包含签发经认可的可核查证明的条款  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证证明所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `termsOfUse[array]`: 包含签发经认可的可核查证明的条款  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
 <!-- /35-RequiredProperties -->  
