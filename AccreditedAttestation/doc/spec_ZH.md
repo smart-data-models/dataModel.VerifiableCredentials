@@ -14,7 +14,8 @@
 
 ##属性列表  
 
-- `credentialSchema`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject`: 定义了可验证证明所描述的主体的信息  - `evidence`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate`: 定义了可验证证明到期的日期和时间。  - `id`: 定义了可验证证明的唯一标识符  - `issuanceDate`: 定义日期和时间，当可验证的证明变得有效时。  - `issued`: 定义了可验证证明的签发时间  - `issuer`: 定义了可验证证明的签发者  - `proof`: 包含有关证明的信息  - `termsOfUse`: 包含签发经认可的可核查证明的条款  - `type`: 定义了可验证凭证的类型  - `validFrom`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
+<sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
+- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证证明所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `termsOfUse[array]`: 包含签发经认可的可核查证明的条款  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
 <!-- /35-RequiredProperties -->  
@@ -228,6 +229,7 @@ AccreditedAttestation:
 不提供JSON-LD格式的AccreditedAttestation规范化的例子。当不使用选项时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
 #### AccreditedAttestation NGSI-LD key-values 示例  
 这里是一个以JSON-LD格式作为关键值的AccreditedAttestation的例子。当使用`options=keyValues`时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
+<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -261,6 +263,7 @@ AccreditedAttestation:
   }  
 }  
 ```  
+</details>  
 不提供JSON-LD格式的AccreditedAttestation规范化的例子。当不使用选项时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -268,3 +271,6 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 参见[常见问题10](https://smartdatamodels.org/index.php/faqs/)，以获得关于如何处理量级单位的答案。  
 <!-- /95-Units -->  
+<!-- 97-LastFooter -->  
+---  
+[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
