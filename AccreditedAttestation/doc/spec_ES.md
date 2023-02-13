@@ -14,7 +14,8 @@
 
 ## Lista de propiedades  
 
-- `credentialSchema`: Contiene información sobre el esquema de credenciales (plantilla) en el que se basa la autorización verificable  - `credentialStatus`: Contiene información sobre cómo verificar el estado de la atestación verificable (a través del Registro de Revocación y Refrendo, RER)  - `credentialSubject`: Define la información sobre el sujeto que se describe en el certificado verificable.  - `evidence`: Contiene información sobre el proceso que dio lugar a la emisión del certificado verificable  - `expirationDate`: Define la fecha y hora en que expira el certificado verificable.  - `id`: Define el identificador único del certificado verificable  - `issuanceDate`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `issued`: Define cuándo se emitió el certificado verificable  - `issuer`: Define el emisor del certificado verificable  - `proof`: Contiene información sobre la prueba  - `termsOfUse`: Contiene los términos en los que se expidió el Certificado Verificable Acreditado  - `type`: Define el tipo de credencial verificable  - `validFrom`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `validUntil`: Define la fecha y hora en que expira el certificado verificable.  <!-- /30-PropertiesList -->  
+<sup><sub>[*] Si no hay un tipo en un atributo es porque puede tener varios tipos o diferentes formatos/patrones</sub></sup>.  
+- `credentialSchema[object]`: Contiene información sobre el esquema de credenciales (plantilla) en el que se basa la autorización verificable  - `credentialStatus[object]`: Contiene información sobre cómo verificar el estado de la atestación verificable (a través del Registro de Revocación y Refrendo, RER)  - `credentialSubject[object]`: Define la información sobre el sujeto que se describe en el certificado verificable.  - `evidence[array]`: Contiene información sobre el proceso que dio lugar a la emisión del certificado verificable  - `expirationDate[string]`: Define la fecha y hora en que expira el certificado verificable.  - `id[string]`: Define el identificador único del certificado verificable  - `issuanceDate[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `issued[string]`: Define cuándo se emitió el certificado verificable  - `issuer[string]`: Define el emisor del certificado verificable  - `proof[object]`: Contiene información sobre la prueba  - `termsOfUse[array]`: Contiene los términos en los que se expidió el Certificado Verificable Acreditado  - `type[array]`: Define el tipo de credencial verificable  - `validFrom[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `validUntil[string]`: Define la fecha y hora en que expira el certificado verificable.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propiedades requeridas  
 <!-- /35-RequiredProperties -->  
@@ -228,6 +229,7 @@ AccreditedAttestation:
 No disponible el ejemplo de un AccreditedAttestation en formato JSON-LD normalizado. Esto es compatible con NGSI-v2 cuando no se utilizan opciones y devuelve los datos de contexto de una entidad individual.  
 #### AccreditedAttestation NGSI-LD key-values Ejemplo  
 He aquí un ejemplo de AccreditedAttestation en formato JSON-LD como key-values. Esto es compatible con NGSI-LD cuando se utiliza `options=keyValues` y devuelve los datos de contexto de una entidad individual.  
+<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -261,6 +263,7 @@ AccreditedAttestation:
   }  
 }  
 ```  
+</details>  
 No disponible el ejemplo de un AccreditedAttestation en formato JSON-LD normalizado. Esto es compatible con NGSI-LD cuando no se utilizan opciones y devuelve los datos de contexto de una entidad individual.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -268,3 +271,6 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 Consulte [FAQ 10](https://smartdatamodels.org/index.php/faqs/) para obtener una respuesta sobre cómo tratar las unidades de magnitud.  
 <!-- /95-Units -->  
+<!-- 97-LastFooter -->  
+---  
+[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
