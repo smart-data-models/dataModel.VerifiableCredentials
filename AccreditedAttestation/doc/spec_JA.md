@@ -15,7 +15,7 @@
 ## プロパティ一覧  
 
 <sup><sub>[*] 属性にタイプがない場合、複数のタイプまたは異なるフォーマット/パターンを持つ可能性があるためです</sub></sup>。  
-- `credentialSchema[object]`: 検証可能な認証が基づいているクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  - `credentialStatus[object]`: 検証可能な証明の状態を確認する方法に関する情報を含む（RER（Revocation and Endorsement Registry）経由）。  - `credentialSubject[object]`: 検証可能な証明書によって記述される対象者に関する情報を定義する。  - `evidence[array]`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate[string]`: 検証可能証明書の有効期限を定義する。  - `id[string]`: 検証可能な証明の一意の識別子を定義する。  - `issuanceDate[string]`: 検証可能証明書が有効になる日時を定義する。  - `issued[string]`: 検証可能証明書がいつ発行されたかを定義する。  - `issuer[string]`: 検証可能証明書の発行者を定義する。  - `proof[object]`: 証明に関する情報が記載されています  - `termsOfUse[array]`: Accredited Verifiable Attestationの発行条件を含む。  - `type[array]`: 検証可能なクレデンシャルタイプを定義する  - `validFrom[string]`: 検証可能証明書が有効になる日時を定義する。  - `validUntil[string]`: 検証可能証明書の有効期限を定義する。  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: 検証可能な認証が基づいているクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  - `credentialStatus[object]`: 検証可能な証明の状態を確認する方法に関する情報を含む（RER（Revocation and Endorsement Registry）経由）。  - `credentialSubject[object]`: 検証可能な証明書によって記述される対象者に関する情報を定義する。  - `evidence[array]`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate[string]`: 検証可能な証明書の有効期限が切れる日時を定義する。  - `id[string]`: 検証可能な証明の一意の識別子を定義する。  - `issuanceDate[string]`: 検証可能証明書が有効になる日時を定義する。  - `issued[string]`: 検証可能証明書がいつ発行されたかを定義する。  - `issuer[string]`: 検証可能証明書の発行者を定義する。  - `proof[object]`: 証明に関する情報が記載されています  - `termsOfUse[array]`: Accredited Verifiable Attestationの発行条件を含む。  - `type[array]`: 検証可能なクレデンシャルタイプを定義する  - `validFrom[string]`: 検証可能証明書が有効になる日時を定義する。  - `validUntil[string]`: 検証可能な証明書の有効期限が切れる日時を定義する。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 必要なプロパティ  
 <!-- /35-RequiredProperties -->  
@@ -36,11 +36,11 @@ AccreditedAttestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
         type:    
-          description: Defines credential schema type    
+          description: Property. Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
@@ -48,33 +48,37 @@ AccreditedAttestation:
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialStatus:    
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
         statusListCredential:    
-          description: URL referencing the StatusList2021Credential    
+          description: Property. URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
         statusListIndex:    
-          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
         statusPurpose:    
-          description: Purpose of the status entry    
+          description: Property. Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
         type:    
-          description: Defines the Verifiable Credential status type    
+          description: Property. Defines the Verifiable Credential status type    
           type: string    
       required:    
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialSubject:    
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
@@ -100,13 +104,13 @@ AccreditedAttestation:
               type: string    
             type: array    
           id:    
-            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
             type: string    
           subjectPresence:    
             description: Property. Description to be completed    
             type: string    
           type:    
-            description: Defines the evidence type    
+            description: Property. Defines the evidence type    
             items:    
               type: string    
             type: array    
@@ -115,6 +119,8 @@ AccreditedAttestation:
           - type    
         type: object    
       type: array    
+      x-ngsi:    
+        type: Property    
     expirationDate:    
       description: 'Defines the date and time, when the Verifiable Attestation expires'    
       format: date-time    
@@ -176,6 +182,7 @@ AccreditedAttestation:
     termsOfUse:    
       description: Contains the terms under which the Accredited Verifiable Attestation was issued    
       items:    
+        description: Property. Description to be completed    
         properties:    
           id:    
             description: Property. Contains a URL that points to where more information about this instance of terms of use can be found.    
@@ -228,7 +235,7 @@ AccreditedAttestation:
 JSON-LD形式のAccreditedAttestationの例をkey-valuesとして利用できない。これは、`options=keyValues`を使用した場合にNGSI-v2と互換性があり、個々のエンティティのコンテキストデータを返します。  
 AccreditedAttestation を JSON-LD 形式で正規化した例は利用不可。オプションを使用しない場合のNGSI-v2との互換性があり、個々のエンティティのコンテキストデータを返す。  
 #### AccreditedAttestation NGSI-LD key-value Example  
-AccreditedAttestationをJSON-LD形式でkey-valuesにした例です。これは、`options=keyValues`を使用した場合にNGSI-LDと互換性があり、個々のエンティティのコンテキストデータを返します。  
+AccreditedAttestationをJSON-LD形式でkey-valuesにした例です。これは、`options=keyValues`を使用した場合にNGSI-LDと互換性があり、個々のエンティティのコンテキストデータが返されます。  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
