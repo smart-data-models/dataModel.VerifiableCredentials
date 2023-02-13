@@ -1,14 +1,6 @@
 Attestation:
   description: Schema of an EBSI Verifiable Attestation
   properties:
-    @context:
-      description: Defines semantic context of the Verifiable Attestation
-      items:
-        format: uri
-        type: string
-      type: array
-      x-ngsi:
-        type: Property
     credentialSchema:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based
       properties:
@@ -163,7 +155,6 @@ Attestation:
       x-ngsi:
         type: Property
   required:
-    - @context
     - id
     - type
     - issuer
