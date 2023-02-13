@@ -20,7 +20,7 @@
 Erforderliche Eigenschaften  
 <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Datenmodelle, die von EBSI-Json-Schemata abgeleitet sind https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Das Attribut @context wurde aus der Definition entfernt, da es in NGSI-LD obligatorisch ist und nicht explizit dokumentiert werden muss. Nur das Beispiel in Key Values Linked Data verfügbar  
+Datenmodelle, die von EBSI-Json-Schemata abgeleitet sind https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Das Attribut @context wurde aus der Definition entfernt, da es in der NGSI-LD obligatorisch ist und nicht explizit dokumentiert werden muss. Nur das Beispiel in Key Values Linked Data verfügbar  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Datenmodell Beschreibung der Eigenschaften  
@@ -36,11 +36,11 @@ AccreditedAttestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
         type:    
-          description: Defines credential schema type    
+          description: Property. Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
@@ -48,33 +48,37 @@ AccreditedAttestation:
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialStatus:    
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
         statusListCredential:    
-          description: URL referencing the StatusList2021Credential    
+          description: Property. URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
         statusListIndex:    
-          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
         statusPurpose:    
-          description: Purpose of the status entry    
+          description: Property. Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
         type:    
-          description: Defines the Verifiable Credential status type    
+          description: Property. Defines the Verifiable Credential status type    
           type: string    
       required:    
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialSubject:    
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
@@ -100,13 +104,13 @@ AccreditedAttestation:
               type: string    
             type: array    
           id:    
-            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
             type: string    
           subjectPresence:    
             description: Property. Description to be completed    
             type: string    
           type:    
-            description: Defines the evidence type    
+            description: Property. Defines the evidence type    
             items:    
               type: string    
             type: array    
@@ -115,6 +119,8 @@ AccreditedAttestation:
           - type    
         type: object    
       type: array    
+      x-ngsi:    
+        type: Property    
     expirationDate:    
       description: 'Defines the date and time, when the Verifiable Attestation expires'    
       format: date-time    
@@ -176,6 +182,7 @@ AccreditedAttestation:
     termsOfUse:    
       description: Contains the terms under which the Accredited Verifiable Attestation was issued    
       items:    
+        description: Property. Description to be completed    
         properties:    
           id:    
             description: Property. Contains a URL that points to where more information about this instance of terms of use can be found.    
