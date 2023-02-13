@@ -14,7 +14,8 @@
 
 ## Liste des propriétés  
 
-- `credentialSchema`: Contient des informations sur le schéma de référence (modèle) sur lequel l'autorisation vérifiable est basée.  - `credentialStatus`: Contient des informations sur la manière de vérifier le statut de l'attestation vérifiable (via le registre des révocations et des avenants, RER).  - `credentialSubject`: Définit les informations sur le sujet qui sont décrites par l'attestation vérifiable.  - `evidence`: Contient des informations sur le processus qui a abouti à la délivrance de l'attestation vérifiable.  - `expirationDate`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  - `id`: Définit l'identifiant unique de l'attestation vérifiable.  - `issuanceDate`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `issued`: Définit la date à laquelle l'attestation vérifiable a été délivrée.  - `issuer`: Définit l'émetteur de l'attestation vérifiable.  - `proof`: Contient des informations sur l'épreuve  - `termsOfUse`: Contient les conditions dans lesquelles l'attestation accréditée vérifiable a été délivrée.  - `type`: Définit le type de justificatif vérifiable  - `validFrom`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `validUntil`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  <!-- /30-PropertiesList -->  
+<sup><sub>[*] S'il n'y a pas de type dans un attribut, c'est parce qu'il pourrait avoir plusieurs types ou différents formats/modèles</sub></sup>.  
+- `credentialSchema[object]`: Contient des informations sur le schéma de référence (modèle) sur lequel l'autorisation vérifiable est basée.  - `credentialStatus[object]`: Contient des informations sur la manière de vérifier le statut de l'attestation vérifiable (via le registre des révocations et des avenants, RER).  - `credentialSubject[object]`: Définit les informations sur le sujet qui sont décrites par l'attestation vérifiable.  - `evidence[array]`: Contient des informations sur le processus qui a abouti à la délivrance de l'attestation vérifiable.  - `expirationDate[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  - `id[string]`: Définit l'identifiant unique de l'attestation vérifiable.  - `issuanceDate[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `issued[string]`: Définit la date à laquelle l'attestation vérifiable a été délivrée.  - `issuer[string]`: Définit l'émetteur de l'attestation vérifiable.  - `proof[object]`: Contient des informations sur l'épreuve  - `termsOfUse[array]`: Contient les conditions dans lesquelles l'attestation accréditée vérifiable a été délivrée.  - `type[array]`: Définit le type de justificatif vérifiable  - `validFrom[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `validUntil[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propriétés requises  
 <!-- /35-RequiredProperties -->  
@@ -228,6 +229,7 @@ AccreditedAttestation:
 Non disponible l'exemple d'une AccreditedAttestation au format JSON-LD tel que normalisé. Ce format est compatible avec la norme NGSI-v2 lorsqu'il n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
 #### AccreditedAttestation NGSI-LD key-values Exemple  
 Voici un exemple d'une AccreditedAttestation au format JSON-LD sous forme de valeurs-clés. Ceci est compatible avec NGSI-LD lorsque vous utilisez `options=keyValues` et renvoie les données contextuelles d'une entité individuelle.  
+<details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
   "@context": ["https://www.w3.org/2018/credentials/v1"],  
@@ -261,6 +263,7 @@ AccreditedAttestation:
   }  
 }  
 ```  
+</details>  
 Non disponible l'exemple d'une AccreditedAttestation au format JSON-LD tel que normalisé. Ce format est compatible avec NGSI-LD lorsqu'il n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
@@ -268,3 +271,6 @@ AccreditedAttestation:
 <!-- 95-Units -->  
 Voir [FAQ 10](https://smartdatamodels.org/index.php/faqs/) pour obtenir une réponse sur la façon de traiter les unités de magnitude.  
 <!-- /95-Units -->  
+<!-- 97-LastFooter -->  
+---  
+[Smart Data Models](https://smartdatamodels.org) +++ [Contribution Manual](https://bit.ly/contribution_manual) +++ [About](https://bit.ly/Introduction_SDM)<!-- /97-LastFooter -->  
