@@ -29,6 +29,7 @@
                 "type": "string"
               }
             },
+            "description": "Property. Description to be completed",
             "required": [
               "id",
               "type"

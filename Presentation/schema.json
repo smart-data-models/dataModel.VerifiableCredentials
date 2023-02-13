@@ -97,7 +97,8 @@
                   "type": "string",
                   "description": "Property. Description to be completed"
                 }
-              }
+              },
+              "description": "Property. Description to be completed"
             }
           },
           {
