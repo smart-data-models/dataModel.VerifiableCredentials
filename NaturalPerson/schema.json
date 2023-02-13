@@ -16,6 +16,13 @@
     },
     {
       "properties": {
+        "type": {
+          "description": "Property. Defines the Verifiable Credential type",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "credentialSubject": {
           "description": "Property. Defines additional information about the subject that is described by the Verifiable ID",
           "type": "object",

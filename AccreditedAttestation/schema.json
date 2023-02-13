@@ -46,6 +46,13 @@
               "format": "uri"
             }
           }
+        },
+        "type": {
+          "description": "Property. Defines the Verifiable Credential type",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": [
