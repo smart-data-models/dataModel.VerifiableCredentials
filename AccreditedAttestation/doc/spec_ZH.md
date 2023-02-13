@@ -15,7 +15,7 @@
 ##属性列表  
 
 <sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
-- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证证明所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `termsOfUse[array]`: 包含签发经认可的可核查证明的条款  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证的证明所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `termsOfUse[array]`: 包含签发经认可的可核查证明的条款  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
 <!-- /35-RequiredProperties -->  
@@ -36,11 +36,11 @@ AccreditedAttestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
         type:    
-          description: Defines credential schema type    
+          description: Property. Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
@@ -48,33 +48,37 @@ AccreditedAttestation:
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialStatus:    
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
         statusListCredential:    
-          description: URL referencing the StatusList2021Credential    
+          description: Property. URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
         statusListIndex:    
-          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
         statusPurpose:    
-          description: Purpose of the status entry    
+          description: Property. Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
         type:    
-          description: Defines the Verifiable Credential status type    
+          description: Property. Defines the Verifiable Credential status type    
           type: string    
       required:    
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialSubject:    
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
@@ -100,13 +104,13 @@ AccreditedAttestation:
               type: string    
             type: array    
           id:    
-            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
             type: string    
           subjectPresence:    
             description: Property. Description to be completed    
             type: string    
           type:    
-            description: Defines the evidence type    
+            description: Property. Defines the evidence type    
             items:    
               type: string    
             type: array    
@@ -115,6 +119,8 @@ AccreditedAttestation:
           - type    
         type: object    
       type: array    
+      x-ngsi:    
+        type: Property    
     expirationDate:    
       description: 'Defines the date and time, when the Verifiable Attestation expires'    
       format: date-time    
@@ -176,6 +182,7 @@ AccreditedAttestation:
     termsOfUse:    
       description: Contains the terms under which the Accredited Verifiable Attestation was issued    
       items:    
+        description: Property. Description to be completed    
         properties:    
           id:    
             description: Property. Contains a URL that points to where more information about this instance of terms of use can be found.    
