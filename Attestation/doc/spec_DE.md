@@ -7,18 +7,20 @@
 [Dokument automatisch generiert](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Globale Beschreibung: **Schema einer überprüfbaren EBSI-Bescheinigung**  
+Version: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Liste der Eigenschaften  
 
 <sup><sub>[*] Wenn es für ein Attribut keinen Typ gibt, kann es mehrere Typen oder verschiedene Formate/Muster haben</sub></sup>.  
-<!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Enthält Informationen über das Berechtigungsschema (Vorlage), auf dem die überprüfbare Berechtigung basiert  - `credentialStatus[object]`: Enthält Informationen darüber, wie der Status der überprüfbaren Bescheinigung überprüft werden kann (über das Register für Widerrufe und Vermerke, RER)  - `credentialSubject[object]`: Definiert Informationen über das Subjekt, das durch die überprüfbare Bescheinigung beschrieben wird  - `evidence[array]`: Enthält Informationen über den Prozess, der zur Ausstellung der überprüfbaren Bescheinigung geführt hat  - `expirationDate[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  - `id[string]`: Definiert den eindeutigen Bezeichner der überprüfbaren Bescheinigung  - `issuanceDate[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `issued[string]`: Legt fest, wann die überprüfbare Bescheinigung ausgestellt wurde  - `issuer[string]`: Legt den Aussteller der prüfbaren Bescheinigung fest  - `proof[object]`: Enthält Informationen über den Beweis  - `type[array]`: Definiert den Typ der überprüfbaren Bescheinigung  - `validFrom[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `validUntil[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Erforderliche Eigenschaften  
-- Keine erforderlichen Eigenschaften  <!-- /35-RequiredProperties -->  
+- `credentialSchema`  - `credentialSubject`  - `id`  - `issuanceDate`  - `issued`  - `issuer`  - `type`  - `validFrom`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Datenmodell abgeleitet von EBSI json schemas https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Nur das Beispiel in Schlüsselwerten verknüpfter Daten verfügbar  
+Datenmodelle, die von EBSI-Json-Schemata abgeleitet sind https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Das Attribut @context wurde aus der Definition entfernt, da es in NGSI-LD obligatorisch ist und nicht explizit dokumentiert werden muss. Nur das Beispiel in Key Values Linked Data verfügbar  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Datenmodell Beschreibung der Eigenschaften  
@@ -30,14 +32,6 @@
 Attestation:    
   description: Schema of an EBSI Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
-      x-ngsi:    
-        type: Property    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -192,7 +186,6 @@ Attestation:
       x-ngsi:    
         type: Property    
   required:    
-    - @context    
     - id    
     - type    
     - issuer    
