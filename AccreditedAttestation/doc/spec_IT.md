@@ -234,7 +234,7 @@ AccreditedAttestation:
 ## Esempi di payload  
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD come valori-chiave. Questo è compatibile con NGSI-v2 quando si usa `options=keyValues` e restituisce i dati di contesto di una singola entità.  
 Non è disponibile l'esempio di un AccreditedAttestation in formato JSON-LD normalizzato. Questo è compatibile con NGSI-v2 quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
-#### AccreditedAttestation Valori delle chiavi NGSI-LD Esempio  
+#### AccreditedAttestation Valori chiave NGSI-LD Esempio  
 Ecco un esempio di AccreditedAttestation in formato JSON-LD come valori-chiave. Questo è compatibile con NGSI-LD quando si usa `options=keyValues` e restituisce i dati di contesto di una singola entità.  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
