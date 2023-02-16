@@ -1,0 +1,21 @@
+{
+    "@context": {
+        "credentialSchema": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialSchema",
+        "credentialStatus": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialStatus",
+        "credentialSubject": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialSubject",
+        "evidence": "https://smartdatamodels.org/dataModel.VerifiableCredentials/evidence",
+        "expirationDate": "https://smartdatamodels.org/dataModel.VerifiableCredentials/expirationDate",
+        "holder": "https://smartdatamodels.org/dataModel.VerifiableCredentials/holder",
+        "id": "@id",
+        "issuanceDate": "https://smartdatamodels.org/dataModel.VerifiableCredentials/issuanceDate",
+        "issued": "https://smartdatamodels.org/dataModel.VerifiableCredentials/issued",
+        "issuer": "https://smartdatamodels.org/dataModel.VerifiableCredentials/issuer",
+        "ngsi-ld": "https://uri.etsi.org/ngsi-ld/",
+        "proof": "https://smartdatamodels.org/dataModel.VerifiableCredentials/proof",
+        "termsOfUse": "https://smartdatamodels.org/dataModel.VerifiableCredentials/termsOfUse",
+        "type": "@type",
+        "validFrom": "https://smartdatamodels.org/dataModel.VerifiableCredentials/validFrom",
+        "validUntil": "https://smartdatamodels.org/dataModel.VerifiableCredentials/validUntil",
+        "verifiableCredential": "https://smartdatamodels.org/dataModel.VerifiableCredentials/verifiableCredential"
+    }
+}
