@@ -63,12 +63,6 @@ Presentation:
                   type: string
               type: object
             properties:
-              @context:
-                description: Property. Defines semantic context of the Verifiable Presentation
-                items:
-                  format: uri
-                  type: string
-                type: array
               credentialSubject:
                 dateOfBirth:
                   description: Property. Description to be completed
