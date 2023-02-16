@@ -7,18 +7,20 @@
 [documento generado automáticamente](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Descripción global: **Esquema de un certificado verificable EBSI**  
+versión: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Lista de propiedades  
 
 <sup><sub>[*] Si no hay un tipo en un atributo es porque puede tener varios tipos o diferentes formatos/patrones</sub></sup>.  
-<!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Contiene información sobre el esquema de credenciales (plantilla) en el que se basa la autorización verificable  - `credentialStatus[object]`: Contiene información sobre cómo verificar el estado de la atestación verificable (a través del Registro de Revocación y Refrendo, RER)  - `credentialSubject[object]`: Define la información sobre el sujeto que se describe en el certificado verificable.  - `evidence[array]`: Contiene información sobre el proceso que dio lugar a la emisión del certificado verificable  - `expirationDate[string]`: Define la fecha y hora en que expira el certificado verificable.  - `id[string]`: Define el identificador único del certificado verificable  - `issuanceDate[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `issued[string]`: Define cuándo se emitió el certificado verificable  - `issuer[string]`: Define el emisor del certificado verificable  - `proof[object]`: Contiene información sobre la prueba  - `type[array]`: Define el tipo de credencial verificable  - `validFrom[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `validUntil[string]`: Define la fecha y hora en que expira el certificado verificable.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propiedades requeridas  
-- No se requieren propiedades  <!-- /35-RequiredProperties -->  
+- `credentialSchema`  - `credentialSubject`  - `id`  - `issuanceDate`  - `issued`  - `issuer`  - `type`  - `validFrom`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Modelo de datos derivado de los esquemas EBSI json https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Sólo disponible el ejemplo en key values linked data  
+Modelos de datos derivados de esquemas json EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. El atributo @context se ha eliminado de la definición porque es obligatorio en NGSI-LD y no es necesario documentarlo explícitamente. Sólo está disponible el ejemplo en datos enlazados con valores clave  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Descripción de las propiedades del modelo de datos  
@@ -30,14 +32,6 @@
 Attestation:    
   description: Schema of an EBSI Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
-      x-ngsi:    
-        type: Property    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -192,7 +186,6 @@ Attestation:
       x-ngsi:    
         type: Property    
   required:    
-    - @context    
     - id    
     - type    
     - issuer    
@@ -215,7 +208,7 @@ Attestation:
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
 ## Ejemplo de carga útil  
-No disponible el ejemplo de un Attestation en formato JSON-LD como key-values. Esto es compatible con NGSI-v2 cuando se utiliza `options=keyValues` y devuelve los datos de contexto de una entidad individual.  
+No está disponible el ejemplo de una Attestation en formato JSON-LD como key-values. Esto es compatible con NGSI-v2 cuando se utiliza `options=keyValues` y devuelve los datos de contexto de una entidad individual.  
 No disponible el ejemplo de un Atestado en formato JSON-LD normalizado. Esto es compatible con NGSI-v2 cuando no se utilizan opciones y devuelve los datos de contexto de una entidad individual.  
 #### Attestation NGSI-LD key-values Ejemplo  
 A continuación se muestra un ejemplo de un Attestation en formato JSON-LD como key-values. Esto es compatible con NGSI-LD cuando se utiliza `options=keyValues` y devuelve los datos de contexto de una entidad individual.  
