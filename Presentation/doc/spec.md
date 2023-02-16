@@ -7,24 +7,149 @@
 [document generated automatically](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Global description: **Schema of an EBSI Verifiable Presentation**  
+version: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## List of properties  
 
 <sup><sub>[*] If there is not a type in an attribute is because it could have several types or different formats/patterns</sub></sup>  
-<!-- /30-PropertiesList -->  
+- `holder[string]`: Defines unique identifier of the party who shares the Verifiable Presentation  - `proof[object]`: Contains information about the proof  - `type[array]`: Defines the Verifiable Presentation type  - `verifiableCredential[array]`: Contains the personal information intended to be shared  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Required properties  
-- No required properties  <!-- /35-RequiredProperties -->  
+- `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Data model derived from EBSI json schemas https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Only available the example in key values linked data  
+Data models derived from EBSI json schemas https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. @context attribute has been removed from the definition because it is mandatory in NGSI-LD and does not need to be documented explicitly. Only available the example in key values linked data  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Data Model description of properties  
 Sorted alphabetically (click for details)  
 <!-- /50-DataModelHeader -->  
 <!-- 60-ModelYaml -->  
+<details><summary><strong>full yaml details</strong></summary>    
+```yaml  
+Presentation:    
+  description: Schema of an EBSI Verifiable Presentation    
+  properties:    
+    holder:    
+      description: Defines unique identifier of the party who shares the Verifiable Presentation    
+      type: string    
+      x-ngsi:    
+        type: Property    
+    proof:    
+      description: Contains information about the proof    
+      properties:    
+        challenge:    
+          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          type: string    
+        created:    
+          description: 'Property. Defines the date and time, when the proof has been created'    
+          format: date-time    
+          type: string    
+        domain:    
+          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          format: hostname    
+          type: string    
+        jws:    
+          description: Property. Defines the proof value in JWS format    
+          type: string    
+        proofPurpose:    
+          description: Property. Defines the purpose of the proof    
+          type: string    
+        type:    
+          description: Property. Defines the proof type    
+          type: string    
+        verificationMethod:    
+          description: Property. Contains information about the verification method / proof mechanisms    
+          type: string    
+      required:    
+        - type    
+        - proofPurpose    
+        - created    
+        - verificationMethod    
+        - jws    
+      type: object    
+      x-ngsi:    
+        type: Property    
+    type:    
+      description: Defines the Verifiable Presentation type    
+      items:    
+        type: string    
+      type: array    
+      x-ngsi:    
+        type: Property    
+    verifiableCredential:    
+      description: Contains the personal information intended to be shared    
+      items:    
+        oneOf:    
+          - credentialSchema:    
+              description: Property. Description to be completed    
+              properties:    
+                id:    
+                  description: Property. Description to be completed    
+                  type: string    
+                type:    
+                  description: Property. Description to be completed    
+                  type: string    
+              type: object    
+            properties:    
+              credentialSubject:    
+                dateOfBirth:    
+                  description: Property. Description to be completed    
+                  format: Date    
+                  type: string    
+                familyName:    
+                  description: Property. Description to be completed    
+                  type: string    
+                firstName:    
+                  description: Property. Description to be completed    
+                  type: string    
+                id:    
+                  description: Property. Description to be completed    
+                  format: uri    
+                  type: string    
+                personalIdentifier:    
+                  description: Property. Description to be completed    
+                  type: string    
+              id:    
+                description: Property. Description to be completed    
+                format: uri    
+                type: string    
+              issuanceDate:    
+                description: Property. Description to be completed    
+                format: date-time    
+                type: string    
+              issuer:    
+                description: Property. Description to be completed    
+                type: string    
+              type:    
+                description: Property. Description to be completed    
+                items:    
+                  type: string    
+                type: array    
+              validFrom:    
+                description: Property. Description to be completed    
+                format: date-time    
+                type: string    
+            type: object    
+          - type: string    
+      type: array    
+      x-ngsi:    
+        type: Property    
+  required:    
+    - type    
+    - holder    
+    - verifiableCredential    
+  type: object    
+  x-derived-from: https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-presentation/2022-11/schema.json    
+  x-disclaimer: 'Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program'    
+  x-license-url: https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/Presentation/LICENSE.md    
+  x-model-schema: ""    
+  x-model-tags: 'EBSI, Verifiable Credentials'    
+  x-version: 0.0.1    
+```  
+</details>    
 <!-- /60-ModelYaml -->  
 <!-- 70-MiddleNotes -->  
 <!-- /70-MiddleNotes -->  
