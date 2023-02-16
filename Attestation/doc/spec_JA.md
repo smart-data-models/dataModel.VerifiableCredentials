@@ -7,18 +7,20 @@
 [ドキュメント自動生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+グローバルな記述です。**EBSI 検証可能な証明書のスキーマ**。  
+バージョン: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## プロパティ一覧  
 
 <sup><sub>[*] 属性にタイプがない場合、複数のタイプまたは異なるフォーマット/パターンを持つ可能性があるためです</sub></sup>。  
-<!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: 検証可能な認証が基づいているクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  - `credentialStatus[object]`: 検証可能な証明の状態を確認する方法に関する情報を含む（RER（Revocation and Endorsement Registry）経由）。  - `credentialSubject[object]`: 検証可能な証明書によって記述される対象者に関する情報を定義する。  - `evidence[array]`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate[string]`: 検証可能な証明書の有効期限が切れる日時を定義する。  - `id[string]`: 検証可能な証明の一意の識別子を定義する。  - `issuanceDate[string]`: 検証可能証明書が有効になる日時を定義する。  - `issued[string]`: 検証可能証明書がいつ発行されたかを定義する。  - `issuer[string]`: 検証可能証明書の発行者を定義する。  - `proof[object]`: 証明に関する情報が記載されています  - `type[array]`: 検証可能なクレデンシャルタイプを定義する  - `validFrom[string]`: 検証可能証明書が有効になる日時を定義する。  - `validUntil[string]`: 検証可能な証明書の有効期限が切れる日時を定義する。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 必要なプロパティ  
-- 必要なプロパティはありません  <!-- /35-RequiredProperties -->  
+- `credentialSchema`  - `credentialSubject`  - `id`  - `issuanceDate`  - `issued`  - `issuer`  - `type`  - `validFrom`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-EBSIのjsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.キーバリューのリンクデータの例のみ利用可能  
+EBSI jsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.context属性はNGSI-LDでは必須であり、明示的に文書化する必要がないため、定義から削除された。リンクデータのキーバリューの例のみ利用可能  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## プロパティのデータモデル記述  
@@ -30,14 +32,6 @@
 Attestation:    
   description: Schema of an EBSI Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
-      x-ngsi:    
-        type: Property    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -192,7 +186,6 @@ Attestation:
       x-ngsi:    
         type: Property    
   required:    
-    - @context    
     - id    
     - type    
     - issuer    
