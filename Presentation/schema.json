@@ -27,14 +27,7 @@
           {
             "type": "object",
             "properties": {
-              "@context": {
-                "description": "Property. Defines semantic context of the Verifiable Presentation",
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
+
               "id": {
                 "type": "string",
                 "format": "uri",
