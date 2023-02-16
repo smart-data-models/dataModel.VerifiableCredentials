@@ -7,18 +7,20 @@
 [document généré automatiquement] (https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Description globale : **Schéma d'un identifiant vérifiable EBSI pour une personne physique**.  
+version : 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Liste des propriétés  
 
 <sup><sub>[*] S'il n'y a pas de type dans un attribut, c'est parce qu'il pourrait avoir plusieurs types ou différents formats/modèles</sub></sup>.  
-<!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Contient des informations sur le schéma de référence (modèle) sur lequel l'autorisation vérifiable est basée.  - `credentialStatus[object]`: Contient des informations sur la manière de vérifier le statut de l'attestation vérifiable (via le registre des révocations et des avenants, RER).  - `credentialSubject[object]`: Définit des informations supplémentaires sur le sujet qui sont décrites par l'identifiant vérifiable.  - `evidence[array]`: Contient des informations sur le processus qui a abouti à la délivrance de l'attestation vérifiable.  - `expirationDate[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  - `id[string]`: Définit l'identifiant unique de l'attestation vérifiable.  - `issuanceDate[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `issued[string]`: Définit la date à laquelle l'attestation vérifiable a été délivrée.  - `issuer[string]`: Définit l'émetteur de l'attestation vérifiable.  - `proof[object]`: Contient des informations sur l'épreuve  - `type[array]`: Définit le type de justificatif vérifiable  - `validFrom[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable devient valide.  - `validUntil[string]`: Définit la date et l'heure auxquelles l'attestation vérifiable expire.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propriétés requises  
-- Aucune propriété requise  <!-- /35-RequiredProperties -->  
+- `credentialSubject`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Modèle de données dérivé des schémas EBSI json https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Seul l'exemple des données liées aux valeurs clés est disponible  
+Modèles de données dérivés des schémas EBSI json https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. L'attribut @context a été supprimé de la définition car il est obligatoire dans la NGSI-LD et n'a pas besoin d'être documenté explicitement. Disponible uniquement dans l'exemple des données liées aux valeurs clés  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Description des propriétés du modèle de données  
@@ -30,21 +32,15 @@
 NaturalPerson:    
   description: Schema of an EBSI Verifiable ID for a natural person    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation. Check this when creating the verifiable attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
         type:    
-          description: Defines credential schema type    
+          description: Property. Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
@@ -52,33 +48,37 @@ NaturalPerson:
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialStatus:    
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
         statusListCredential:    
-          description: URL referencing the StatusList2021Credential    
+          description: Property. URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
         statusListIndex:    
-          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
         statusPurpose:    
-          description: Purpose of the status entry    
+          description: Property. Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
         type:    
-          description: Defines the Verifiable Credential status type    
+          description: Property. Defines the Verifiable Credential status type    
           type: string    
       required:    
         - id    
         - type    
       type: object    
+      x-ngsi:    
+        type: Property    
     credentialSubject:    
       description: Defines additional information about the subject that is described by the Verifiable ID    
       properties:    
@@ -106,7 +106,7 @@ NaturalPerson:
           description: Property. Defines the first and the family name(s) of the credential subject at the time of their birth    
           type: string    
         personalIdentifier:    
-          description: Defines the unique national identifier of the credential subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
+          description: Property. Defines the unique national identifier of the credential subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
           type: string    
         placeOfBirth:    
           description: Property. Defines the place where the credential subjectis born    
@@ -135,13 +135,13 @@ NaturalPerson:
               type: string    
             type: array    
           id:    
-            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
             type: string    
           subjectPresence:    
             description: Property. Description to be completed    
             type: string    
           type:    
-            description: Defines the evidence type    
+            description: Property. Defines the evidence type    
             items:    
               type: string    
             type: array    
@@ -150,6 +150,8 @@ NaturalPerson:
           - type    
         type: object    
       type: array    
+      x-ngsi:    
+        type: Property    
     expirationDate:    
       description: 'Defines the date and time, when the Verifiable Attestation expires'    
       format: date-time    
