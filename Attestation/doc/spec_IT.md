@@ -7,18 +7,20 @@
 [documento generato automaticamente](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
+Descrizione globale: **Schema di un attestato verificabile EBSI**  
+versione: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Elenco delle proprietà  
 
 <sup><sub>[*] Se non c'è un tipo in un attributo è perché potrebbe avere diversi tipi o diversi formati/modelli</sub></sup>.  
-<!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  - `credentialStatus[object]`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  - `credentialSubject[object]`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  - `evidence[array]`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id[string]`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued[string]`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer[string]`: Definisce l'emittente dell'Attestazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  - `type[array]`: Definisce il tipo di credenziale verificabile  - `validFrom[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Proprietà richieste  
-- Nessuna proprietà richiesta  <!-- /35-RequiredProperties -->  
+- `credentialSchema`  - `credentialSubject`  - `id`  - `issuanceDate`  - `issued`  - `issuer`  - `type`  - `validFrom`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Modello di dati derivato da schemi json EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. È disponibile solo l'esempio dei dati collegati ai valori chiave  
+Modelli di dati derivati da schemi json EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. L'attributo @context è stato rimosso dalla definizione perché è obbligatorio in NGSI-LD e non deve essere documentato esplicitamente. È disponibile solo l'esempio nei dati collegati ai valori chiave  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Modello di dati descrizione delle proprietà  
@@ -30,14 +32,6 @@
 Attestation:    
   description: Schema of an EBSI Verifiable Attestation    
   properties:    
-    @context:    
-      description: Defines semantic context of the Verifiable Attestation    
-      items:    
-        format: uri    
-        type: string    
-      type: array    
-      x-ngsi:    
-        type: Property    
     credentialSchema:    
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
@@ -192,7 +186,6 @@ Attestation:
       x-ngsi:    
         type: Property    
   required:    
-    - @context    
     - id    
     - type    
     - issuer    
