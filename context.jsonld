@@ -1,5 +1,10 @@
 {
     "@context": {
+        "AccreditedAttestation": "https://smartdatamodels.org/dataModel.VerifiableCredentials/AccreditedAttestation",
+        "Attestation": "https://smartdatamodels.org/dataModel.VerifiableCredentials/Attestation",
+        "LegalEntity": "https://smartdatamodels.org/dataModel.VerifiableCredentials/LegalEntity",
+        "NaturalPerson": "https://smartdatamodels.org/dataModel.VerifiableCredentials/NaturalPerson",
+        "Presentation": "https://smartdatamodels.org/dataModel.VerifiableCredentials/Presentation",
         "credentialSchema": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialSchema",
         "credentialStatus": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialStatus",
         "credentialSubject": "https://smartdatamodels.org/dataModel.VerifiableCredentials/credentialSubject",
