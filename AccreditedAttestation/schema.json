@@ -20,12 +20,12 @@
                         "type": "object",
                         "properties": {
                             "id": {
-                                "description": "Property. Contains a URL that points to where more information about this instance of terms of use can be found.",
+                                "description": "Property. Contains a URL that points to where more information about this instance of terms of use can be found",
                                 "type": "string",
                                 "format": "uri"
                             },
                             "type": {
-                                "description": "Property. Defines the type of terms of use.",
+                                "description": "Property. Defines the type of terms of use",
                                 "type": "string"
                             }
                         },
