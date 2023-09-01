@@ -1,193 +1,290 @@
 LegalEntity:
+
   description: Schema of an EBSI Verifiable ID for a legal entity
+
   properties:
+
     credentialSchema:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based
       properties:
         id:
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based
           format: uri
           type: string
+          x-ngsi:
+            type: Property
         type:
-          description: Property. Defines credential schema type
+          description: Defines credential schema type
           enum:
             - FullJsonSchemaValidator2021
           type: string
+          x-ngsi:
+            type: Property
       required:
         - id
         - type
       type: object
       x-ngsi:
         type: Property
+
     credentialStatus:
-      description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'
+      description: Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)
       properties:
         id:
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity
           format: uri
           type: string
+          x-ngsi:
+            type: Property
         statusListCredential:
-          description: Property. URL referencing the StatusList2021Credential
+          description: URL referencing the StatusList2021Credential
           format: uri
           type: string
+          x-ngsi:
+            type: Property
         statusListIndex:
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status
           type: string
+          x-ngsi:
+            type: Property
         statusPurpose:
-          description: Property. Purpose of the status entry
+          description: Purpose of the status entry
           enum:
             - revocation
             - suspension
           type: string
+          x-ngsi:
+            type: Property
         type:
-          description: Property. Defines the Verifiable Credential status type
+          description: Defines the Verifiable Credential status type
           type: string
+          x-ngsi:
+            type: Property
       required:
         - id
         - type
       type: object
       x-ngsi:
         type: Property
+
     credentialSubject:
+
       description: Defines information about the subject that is described by the Verifiable ID
+
       properties:
+
         EORI:
-          description: Property. Economic Operator Registration and Identification (EORI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1352/2013)
+          description: Economic Operator Registration and Identification (EORI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1352/2013)
           type: string
+          x-ngsi:
+            type: Property
+
         LEI:
-          description: Property. Official legal entity identifier (LEI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1247/2012)
+          description: Official legal entity identifier (LEI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1247/2012)
           type: string
+          x-ngsi:
+            type: Property
+
         SEED:
-          description: Property. System for Exchange of Excise Data (SEED) of Credential Subject (i.e. excise number provided in Article 2(12) of Council Regulation (EC) No 389/2012)
+          description: System for Exchange of Excise Data (SEED) of Credential Subject (i.e. excise number provided in Article 2(12) of Council Regulation (EC) No 389/2012)
           type: string
+          x-ngsi:
+            type: Property
+
         SIC:
-          description: Property. Standard Industrial Classification (SIC) of Credential Subject (Article 3(1) of Directive 2009/101/EC of the European Parliament and of the Council.)
+          description: Standard Industrial Classification (SIC) of Credential Subject (Article 3(1) of Directive 2009/101/EC of the European Parliament and of the Council.)
           type: string
+          x-ngsi:
+            type: Property
+
         VATRegistration:
-          description: Property. VAT number  of Credential Subject
+          description: VAT number  of Credential Subject
           type: string
+          x-ngsi:
+            type: Property
+
         domainName:
-          description: Property. Domain name  of Credential Subject
+          description: Domain name  of Credential Subject
           type: string
+          x-ngsi:
+            type: Property
+
         id:
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation
+          description: Defines the DID of the subject that is described by the Verifiable Attestation
           format: uri
           type: string
+          x-ngsi:
+            type: Property
+
         identifier:
-          description: Property. Description to be completed
+          description: Description to be completed
           items:
             properties:
               id:
-                description: Property. Description to be completed
+                description: Description to be completed
                 format: uri
                 type: string
+                x-ngsi:
+                  type: Property
               schemeID:
-                description: Property. Description to be completed
+                description: Description to be completed
                 type: string
+                x-ngsi:
+                  type: Property
               value:
-                description: Property. Description to be completed
+                description: Description to be completed
                 type: string
+                x-ngsi:
+                  type: Property
             type: object
           type: array
+          x-ngsi:
+            type: Property
+
         legalAddress:
-          description: Property. Official legal address of Credential Subject
+          description: Official legal address of Credential Subject
           type: string
+          x-ngsi:
+            type: Property
+
         legalName:
-          description: Property. Official legal name of Credential Subject
+          description: Official legal name of Credential Subject
           type: string
+          x-ngsi:
+            type: Property
+
         legalPersonIdentifier:
-          description: Property. National/Legal Identifier of Credential Subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)
+          description: National/Legal Identifier of Credential Subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)
           type: string
+          x-ngsi:
+            type: Property
+
         taxReference:
-          description: Property. Official tax reference number of Credential Subject
+          description: Official tax reference number of Credential Subject
           type: string
+          x-ngsi:
+            type: Property
+
       required:
         - id
         - legalName
+
       type: object
+
       x-ngsi:
         type: Property
+
     evidence:
+
       description: Contains information about the process which resulted in the issuance of the Verifiable Attestation
+
       items:
         properties:
           documentPresence:
             items:
-              description: Property. Description to be completed
+              description: Description to be completed
               type: string
+              x-ngsi:
+                type: Property
             type: array
           evidenceDocument:
             items:
-              description: Property. Description to be completed
+              description: Description to be completed
               type: string
+              x-ngsi:
+                type: Property
             type: array
           id:
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'
+            description: If present, it MUST contain a URL that points to where more information about this instance of evidence can be found
             type: string
+            x-ngsi:
+              type: Property
           subjectPresence:
-            description: Property. Description to be completed
+            description: Description to be completed
             type: string
+            x-ngsi:
+              type: Property
           type:
-            description: Property. Defines the evidence type
+            description: Defines the evidence type
             items:
               type: string
             type: array
+            x-ngsi:
+              type: Property
         required:
           - id
           - type
         type: object
+
       type: array
+
       x-ngsi:
         type: Property
+
     expirationDate:
-      description: 'Defines the date and time, when the Verifiable Attestation expires'
+      description: Defines the date and time, when the Verifiable Attestation expires
       format: date-time
       type: string
       x-ngsi:
         type: Property
+
     id:
       description: Defines unique identifier of the Verifiable Attestation
       format: uri
       type: string
       x-ngsi:
         type: Property
+
     issuanceDate:
-      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
+      description: Defines the date and time, when the Verifiable Attestation becomes valid
       format: date-time
       type: string
       x-ngsi:
         type: Property
+
     issued:
       description: Defines when the Verifiable Attestation was issued
       format: date-time
       type: string
       x-ngsi:
         type: Property
+
     issuer:
       description: Defines the issuer of the Verifiable Attestation
       format: uri
       type: string
       x-ngsi:
         type: Property
+
     proof:
       description: Contains information about the proof
       properties:
         created:
-          description: 'Property. Defines the date and time, when the proof has been created'
+          description: Defines the date and time, when the proof has been created
           format: date-time
           type: string
+          x-ngsi:
+            type: Property
         jws:
-          description: Property. Defines the proof value in JWS format
+          description: Defines the proof value in JWS format
           type: string
+          x-ngsi:
+            type: Property
         proofPurpose:
-          description: Property. Defines the purpose of the proof
+          description: Defines the purpose of the proof
           type: string
+          x-ngsi:
+            type: Property
         type:
-          description: Property. Defines the proof type
+          description: Defines the proof type
           type: string
+          x-ngsi:
+            type: Property
         verificationMethod:
-          description: Property. Contains information about the verification method / proof mechanisms
+          description: Contains information about the verification method / proof mechanisms
           type: string
+          x-ngsi:
+            type: Property
       required:
         - type
         - proofPurpose
@@ -197,6 +294,7 @@ LegalEntity:
       type: object
       x-ngsi:
         type: Property
+
     type:
       description: Defines the Verifiable Credential type
       items:
@@ -204,24 +302,34 @@ LegalEntity:
       type: array
       x-ngsi:
         type: Property
+
     validFrom:
-      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
+      description: Defines the date and time, when the Verifiable Attestation becomes valid
       format: date-time
       type: string
       x-ngsi:
         type: Property
+
     validUntil:
-      description: 'Defines the date and time, when the Verifiable Attestation expires'
+      description: Defines the date and time, when the Verifiable Attestation expires
       format: date-time
       type: string
       x-ngsi:
         type: Property
+
   required:
     - credentialSubject
+
   type: object
+
   x-derived-from: https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-vid/legal-entity/2022-11/schema.json
-  x-disclaimer: 'Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program'
+
+  x-disclaimer: Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program
+
   x-license-url: https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/LegalEntity/LICENSE.md
-  x-model-schema: ""
-  x-model-tags: 'EBSI, Verifiable Credentials'
+
+  x-model-schema: ''
+
+  x-model-tags: EBSI, Verifiable Credentials
+
   x-version: 0.0.1
