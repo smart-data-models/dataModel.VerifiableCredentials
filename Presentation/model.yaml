@@ -1,14 +1,131 @@
 Presentation:
   description: Schema of an EBSI Verifiable Presentation
-  properties: {}
+  properties:
+    holder:
+      description: Defines unique identifier of the party who shares the Verifiable Presentation
+      type: string
+      x-ngsi:
+        type: Property
+    proof:
+      description: Contains information about the proof
+      properties:
+        challenge:
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks
+          type: string
+          x-ngsi:
+            type: Property
+        created:
+          description: 'Defines the date and time, when the proof has been created'
+          format: date-time
+          type: string
+          x-ngsi:
+            type: Property
+        domain:
+          description: Defines a string value that specifies the operational domain of a digital proof
+          format: hostname
+          type: string
+          x-ngsi:
+            type: Property
+        jws:
+          description: Defines the proof value in JWS format
+          type: string
+          x-ngsi:
+            type: Property
+        proofPurpose:
+          description: Defines the purpose of the proof
+          type: string
+          x-ngsi:
+            type: Property
+        type:
+          description: Defines the proof type
+          type: string
+          x-ngsi:
+            type: Property
+        verificationMethod:
+          description: Contains information about the verification method / proof mechanisms
+          type: string
+          x-ngsi:
+            type: Property
+      required:
+        - type
+        - proofPurpose
+        - created
+        - verificationMethod
+        - jws
+      type: object
+      x-ngsi:
+        type: Property
+    type:
+      description: Defines the Verifiable Presentation type
+      items:
+        type: string
+      type: array
+      x-ngsi:
+        type: Property
+    verifiableCredential:
+      description: Contains the personal information intended to be shared
+      items:
+        oneOf:
+          - credentialSubject:
+              dateOfBirth:
+                description: Property. Description to be completed
+                format: Date
+                type: string
+              familyName:
+                description: Property. Description to be completed
+                type: string
+              firstName:
+                description: Property. Description to be completed
+                type: string
+              id:
+                description: Property. Description to be completed
+                format: uri
+                type: string
+              personalIdentifier:
+                description: Property. Description to be completed
+                type: string
+            id:
+              description: Description to be completed
+              format: uri
+              type: string
+              x-ngsi:
+                type: Property
+            issuanceDate:
+              description: Description to be completed
+              format: date-time
+              type: string
+              x-ngsi:
+                type: Property
+            issuer:
+              description: Description to be completed
+              type: string
+              x-ngsi:
+                type: Property
+            type:
+              description: Description to be completed
+              items:
+                type: string
+              type: array
+              x-ngsi:
+                type: Property
+            validFrom:
+              description: Description to be completed
+              format: date-time
+              type: string
+              x-ngsi:
+                type: Property
+          - type: string
+      type: array
+      x-ngsi:
+        type: Property
   required:
     - type
     - holder
     - verifiableCredential
   type: object
   x-derived-from: https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-presentation/2022-11/schema.json
-  x-disclaimer: Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program
+  x-disclaimer: 'Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program'
   x-license-url: https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/Presentation/LICENSE.md
-  x-model-schema: ''
-  x-model-tags: EBSI, Verifiable Credentials
+  x-model-schema: ""
+  x-model-tags: 'EBSI, Verifiable Credentials'
   x-version: 0.0.1
