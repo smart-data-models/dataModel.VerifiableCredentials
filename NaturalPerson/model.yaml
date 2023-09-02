@@ -1,9 +1,6 @@
 NaturalPerson:
-
   description: Schema of an EBSI Verifiable ID for a natural person
-
   properties:
-
     credentialSchema:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based
       properties:
@@ -26,9 +23,8 @@ NaturalPerson:
       type: object
       x-ngsi:
         type: Property
-
     credentialStatus:
-      description: Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)
+      description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'
       properties:
         id:
           description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity
@@ -66,85 +62,67 @@ NaturalPerson:
       type: object
       x-ngsi:
         type: Property
-
     credentialSubject:
-
       description: Defines additional information about the subject that is described by the Verifiable ID
-
       properties:
-
         currentAddress:
           description: Defines the current address of the credential subject
           type: string
           x-ngsi:
             type: Property
-
         dateOfBirth:
           description: Defines date of birth of the credential subject
           format: date
           type: string
           x-ngsi:
             type: Property
-
         familyName:
           description: Defines current family name(s) of the credential subject
           type: string
           x-ngsi:
             type: Property
-
         firstName:
           description: Defines current first name(s) of the credential subject
           type: string
           x-ngsi:
             type: Property
-
         gender:
           description: Defines the gender of the credential subject
           type: string
           x-ngsi:
             type: Property
-
         id:
           description: Defines the DID of the subject that is described by the Verifiable Attestation
           format: uri
           type: string
           x-ngsi:
             type: Property
-
         nameAndFamilyNameAtBirth:
           description: Defines the first and the family name(s) of the credential subject at the time of their birth
           type: string
           x-ngsi:
             type: Property
-
         personalIdentifier:
           description: Defines the unique national identifier of the credential subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)
           type: string
           x-ngsi:
             type: Property
-
         placeOfBirth:
           description: Defines the place where the credential subjectis born
           type: string
           x-ngsi:
             type: Property
-
       required:
         - id
         - familyName
         - firstName
         - dateOfBirth
         - personalIdentifier
-
       type: object
-
       x-ngsi:
         type: Property
-
     evidence:
-
       description: Contains information about the process which resulted in the issuance of the Verifiable Attestation
-
       items:
         properties:
           documentPresence:
@@ -162,7 +140,7 @@ NaturalPerson:
                 type: Property
             type: array
           id:
-            description: If present, it MUST contain a URL that points to where more information about this instance of evidence can be found
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found'
             type: string
             x-ngsi:
               type: Property
@@ -182,52 +160,44 @@ NaturalPerson:
           - id
           - type
         type: object
-
       type: array
-
       x-ngsi:
         type: Property
-
     expirationDate:
-      description: Defines the date and time, when the Verifiable Attestation expires
+      description: 'Defines the date and time, when the Verifiable Attestation expires'
       format: date-time
       type: string
       x-ngsi:
         type: Property
-
     id:
       description: Defines unique identifier of the Verifiable Attestation
       format: uri
       type: string
       x-ngsi:
         type: Property
-
     issuanceDate:
-      description: Defines the date and time, when the Verifiable Attestation becomes valid
+      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
       format: date-time
       type: string
       x-ngsi:
         type: Property
-
     issued:
       description: Defines when the Verifiable Attestation was issued
       format: date-time
       type: string
       x-ngsi:
         type: Property
-
     issuer:
       description: Defines the issuer of the Verifiable Attestation
       format: uri
       type: string
       x-ngsi:
         type: Property
-
     proof:
       description: Contains information about the proof
       properties:
         created:
-          description: Defines the date and time, when the proof has been created
+          description: 'Defines the date and time, when the proof has been created'
           format: date-time
           type: string
           x-ngsi:
@@ -261,7 +231,6 @@ NaturalPerson:
       type: object
       x-ngsi:
         type: Property
-
     type:
       description: Defines the Verifiable Credential type
       items:
@@ -269,34 +238,24 @@ NaturalPerson:
       type: array
       x-ngsi:
         type: Property
-
     validFrom:
-      description: Defines the date and time, when the Verifiable Attestation becomes valid
+      description: 'Defines the date and time, when the Verifiable Attestation becomes valid'
       format: date-time
       type: string
       x-ngsi:
         type: Property
-
     validUntil:
-      description: Defines the date and time, when the Verifiable Attestation expires
+      description: 'Defines the date and time, when the Verifiable Attestation expires'
       format: date-time
       type: string
       x-ngsi:
         type: Property
-
   required:
     - credentialSubject
-
   type: object
-
   x-derived-from: https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-vid/natural-person/2022-11/schema.json
-
-  x-disclaimer: Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program
-
+  x-disclaimer: 'Redistribution and use in source and binary forms, with or without modification, are permitted  provided that the license conditions are met. Copyleft (c) 2022 Contributors to Smart Data Models Program'
   x-license-url: https://github.com/smart-data-models/dataModel.VerifiableCredentials/blob/master/NaturalPerson/LICENSE.md
-
-  x-model-schema: ''
-
-  x-model-tags: EBSI, Verifiable Credentials
-
+  x-model-schema: ""
+  x-model-tags: 'EBSI, Verifiable Credentials'
   x-version: 0.0.1
