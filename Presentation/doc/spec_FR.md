@@ -7,23 +7,29 @@
 [document généré automatiquement] (https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
-Description globale : **Schéma d'une présentation vérifiable EBSI**.  
+Description globale : **Schéma d'une présentation vérifiable des normes EBSI**  
 version : 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
 ## Liste des propriétés  
 
-<sup><sub>[*] S'il n'y a pas de type dans un attribut, c'est parce qu'il pourrait avoir plusieurs types ou différents formats/modèles</sub></sup>.  
-- `holder[string]`: Définit l'identifiant unique de la partie qui partage la présentation vérifiable.  - `proof[object]`: Contient des informations sur l'épreuve  - `type[array]`: Définit le type de présentation vérifiable  - `verifiableCredential[array]`: Contient les informations personnelles destinées à être partagées  <!-- /30-PropertiesList -->  
+<sup><sub>[*] S'il n'y a pas de type dans un attribut, c'est parce qu'il peut avoir plusieurs types ou différents formats/modèles</sub></sup>.  
+- `holder[string]`: Définit l'identifiant unique de la partie qui partage la présentation vérifiable.  - `proof[object]`: Contient des informations sur la preuve  	- `challenge[string]`: Définit une valeur aléatoire ou pseudo-aléatoire utilisée par certains protocoles d'authentification pour limiter les attaques par rejeu.    
+	- `created[date-time]`: Définit la date et l'heure auxquelles l'épreuve a été créée.    
+	- `domain[hostname]`: Définit une valeur de chaîne qui spécifie le domaine opérationnel d'une preuve numérique.    
+	- `jws[string]`: Définit la valeur de la preuve au format JWS    
+	- `proofPurpose[string]`: Définit l'objectif de la preuve    
+	- `type[string]`: Définit le type de preuve    
+- `type[array]`: Définit le type de présentation vérifiable  - `verifiableCredential[array]`: Contient les informations personnelles destinées à être partagées  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propriétés requises  
 - `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Modèles de données dérivés des schémas EBSI json https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. L'attribut @context a été supprimé de la définition car il est obligatoire dans la NGSI-LD et n'a pas besoin d'être documenté explicitement. Disponible uniquement dans l'exemple des données liées aux valeurs clés  
+Modèles de données dérivés des schémas json des EBSI https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. L'attribut @context a été supprimé de la définition car il est obligatoire dans la NGSI-LD et n'a pas besoin d'être documenté explicitement. Seul l'exemple des données liées aux valeurs clés est disponible  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
-## Description des propriétés du modèle de données  
+## Modèle de données description des propriétés  
 Classés par ordre alphabétique (cliquez pour plus de détails)  
 <!-- /50-DataModelHeader -->  
 <!-- 60-ModelYaml -->  
@@ -41,28 +47,42 @@ Presentation:
       description: Contains information about the proof    
       properties:    
         challenge:    
-          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
           type: string    
+          x-ngsi:    
+            type: Property    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         domain:    
-          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          description: Defines a string value that specifies the operational domain of a digital proof    
           format: hostname    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -83,56 +103,54 @@ Presentation:
       description: Contains the personal information intended to be shared    
       items:    
         oneOf:    
-          - credentialSchema:    
-              description: Property. Description to be completed    
-              properties:    
-                id:    
-                  description: Property. Description to be completed    
-                  type: string    
-                type:    
-                  description: Property. Description to be completed    
-                  type: string    
-              type: object    
-            properties:    
-              credentialSubject:    
-                dateOfBirth:    
-                  description: Property. Description to be completed    
-                  format: Date    
-                  type: string    
-                familyName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                firstName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                id:    
-                  description: Property. Description to be completed    
-                  format: uri    
-                  type: string    
-                personalIdentifier:    
-                  description: Property. Description to be completed    
-                  type: string    
+          - credentialSubject:    
+              dateOfBirth:    
+                description: Property. Description to be completed    
+                format: Date    
+                type: string    
+              familyName:    
+                description: Property. Description to be completed    
+                type: string    
+              firstName:    
+                description: Property. Description to be completed    
+                type: string    
               id:    
                 description: Property. Description to be completed    
                 format: uri    
                 type: string    
-              issuanceDate:    
-                description: Property. Description to be completed    
-                format: date-time    
-                type: string    
-              issuer:    
+              personalIdentifier:    
                 description: Property. Description to be completed    
                 type: string    
-              type:    
-                description: Property. Description to be completed    
-                items:    
-                  type: string    
-                type: array    
-              validFrom:    
-                description: Property. Description to be completed    
-                format: date-time    
+            id:    
+              description: Description to be completed    
+              format: uri    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuanceDate:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuer:    
+              description: Description to be completed    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            type:    
+              description: Description to be completed    
+              items:    
                 type: string    
-            type: object    
+              type: array    
+              x-ngsi:    
+                type: Property    
+            validFrom:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
           - type: string    
       type: array    
       x-ngsi:    
@@ -155,10 +173,10 @@ Presentation:
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
 ## Exemples de charges utiles  
-Non disponible l'exemple d'une présentation au format JSON-LD comme valeurs-clés. Ceci est compatible avec la NGSI-v2 lorsque l'on utilise `options=keyValues` et renvoie les données contextuelles d'une entité individuelle.  
-Non disponible l'exemple d'une présentation au format JSON-LD tel que normalisé. Cette présentation est compatible avec la NGSI-v2 lorsqu'elle n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
-#### Présentation des valeurs clés NGSI-LD Exemple  
-Voici un exemple de présentation au format JSON-LD sous forme de valeurs-clés. Ceci est compatible avec NGSI-LD en utilisant `options=keyValues` et renvoie les données contextuelles d'une entité individuelle.  
+Non disponible l'exemple d'une présentation au format JSON-LD en tant que valeurs clés. Ceci est compatible avec la NGSI-v2 lorsque l'on utilise `options=keyValues` et renvoie les données de contexte d'une entité individuelle.  
+Non disponible l'exemple d'une présentation au format JSON-LD tel que normalisé. Ce format est compatible avec la NGSI-v2 lorsqu'il n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
+#### Présentation Valeurs clés NGSI-LD Exemple  
+Voici un exemple de présentation au format JSON-LD sous forme de valeurs-clés. Ceci est compatible avec NGSI-LD lorsque l'on utilise `options=keyValues` et renvoie les données contextuelles d'une entité individuelle.  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
@@ -226,12 +244,12 @@ Presentation:
 }  
 ```  
 </details>  
-Non disponible l'exemple d'une présentation au format JSON-LD comme normalisé. Cette présentation est compatible avec NGSI-LD lorsqu'elle n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
+L'exemple d'une présentation au format JSON-LD normalisé n'est pas disponible. Ce format est compatible avec NGSI-LD lorsqu'il n'utilise pas d'options et renvoie les données contextuelles d'une entité individuelle.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
 <!-- 95-Units -->  
-Voir [FAQ 10](https://smartdatamodels.org/index.php/faqs/) pour obtenir une réponse sur la façon de traiter les unités de magnitude.  
+Voir [FAQ 10] (https://smartdatamodels.org/index.php/faqs/) pour obtenir une réponse à la question de savoir comment traiter les unités de magnitude.  
 <!-- /95-Units -->  
 <!-- 97-LastFooter -->  
 ---  
