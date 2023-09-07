@@ -15,7 +15,17 @@
 ## Elenco delle proprietà  
 
 <sup><sub>[*] Se non c'è un tipo in un attributo è perché potrebbe avere diversi tipi o diversi formati/modelli</sub></sup>.  
-- `credentialSchema[object]`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  - `credentialStatus[object]`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  - `credentialSubject[object]`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  - `evidence[array]`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id[string]`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued[string]`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer[string]`: Definisce l'emittente dell'Attestazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  - `type[array]`: Definisce il tipo di credenziale verificabile  - `validFrom[string]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil[string]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Contiene informazioni sullo schema di credenziali (template) su cui si basa l'autorizzazione verificabile.  	- `id[uri]`: Riferimenti allo schema delle credenziali (template) memorizzato nel registro degli schemi attendibili (pertinente) su cui si basa l'autorizzazione verificabile.    
+- `credentialStatus[object]`: Contiene informazioni su come verificare lo stato dell'Attestazione verificabile (tramite il Registro delle revoche e delle approvazioni, RER).  	- `id[uri]`: Riferimenti registrati nel Revocation and Endorsement Registry (RER) per consentire la verifica della validità di un attestato verificabile.    
+	- `statusListCredential[uri]`: URL che fa riferimento alla StatusList2021Credential    
+	- `statusListIndex[string]`: Numero intero espresso come stringa. Il valore dell'indice basato su zero identifica la posizione del bit dello stato.    
+	- `statusPurpose[string]`: Scopo della voce di stato    
+- `credentialSubject[object]`: Definisce le informazioni sul soggetto che sono descritte dall'attestazione verificabile.  	  
+- `evidence[array]`: Contiene informazioni sul processo che ha portato all'emissione dell'Attestazione verificabile.  - `expirationDate[date-time]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  - `id[uri]`: Definisce l'identificativo univoco dell'Attestato verificabile.  - `issuanceDate[date-time]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `issued[date-time]`: Definisce quando è stato emesso l'attestato verificabile.  - `issuer[uri]`: Definisce l'emittente dell'Attestazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  	- `created[date-time]`: Definisce la data e l'ora in cui è stata creata la prova.    
+	- `jws[string]`: Definisce il valore della prova in formato JWS    
+	- `proofPurpose[string]`: Definisce lo scopo della prova    
+	- `type[string]`: Definisce il tipo di prova    
+- `type[array]`: Definisce il tipo di credenziale verificabile  - `validFrom[date-time]`: Definisce la data e l'ora in cui l'Attestazione verificabile diventa valida.  - `validUntil[date-time]`: Definisce la data e l'ora di scadenza dell'Attestazione verificabile.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Proprietà richieste  
 - `credentialSchema`  - `credentialSubject`  - `id`  - `issuanceDate`  - `issued`  - `issuer`  - `type`  - `validFrom`  <!-- /35-RequiredProperties -->  
@@ -36,14 +46,18 @@ Attestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines credential schema type    
+          description: Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -54,25 +68,35 @@ Attestation:
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListCredential:    
-          description: Property. URL referencing the StatusList2021Credential    
+          description: URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListIndex:    
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusPurpose:    
-          description: Property. Purpose of the status entry    
+          description: Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the Verifiable Credential status type    
+          description: Defines the Verifiable Credential status type    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -83,9 +107,11 @@ Attestation:
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
         id:    
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation    
+          description: Defines the DID of the subject that is described by the Verifiable Attestation    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
       type: object    
       x-ngsi:    
         type: Property    
@@ -94,13 +120,17 @@ Attestation:
       items:    
         properties:    
           id:    
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the evidence type    
+            description: Defines the evidence type    
             items:    
               type: string    
             type: array    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
@@ -142,21 +172,31 @@ Attestation:
       description: Contains information about the proof    
       properties:    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
