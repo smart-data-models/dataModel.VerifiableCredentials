@@ -1,30 +1,50 @@
 <!-- 10-Header -->  
 [![Smart Data Models](https://smartdatamodels.org/wp-content/uploads/2022/01/SmartDataModels_logo.png "Logo")](https://smartdatamodels.org)  
-实体。法律实体  
+实体：法律实体  
 =======<!-- /10-Header -->  
 <!-- 15-License -->  
 [开放许可](https://github.com/smart-data-models//dataModel.VerifiableCredentials/blob/master/LegalEntity/LICENSE.md)  
 [文件自动生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
-全球描述。**一个法律实体的EBSI可验证ID的格式**。  
-版本：0.0.1  
+全局描述：法律实体的**EBSI 可验证 ID 架构**  
+版本： 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
-##属性列表  
+## 属性列表  
 
-<sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
-- `credentialSchema[object]`: 包含可验证授权所依据的凭证模式（模板）的信息。  - `credentialStatus[object]`: 包含关于如何验证可核查证明的状态的信息（通过撤销和认可登记处，RER）。  - `credentialSubject[object]`: 定义了可验证ID所描述的主体的信息  - `evidence[array]`: 包含有关导致签发可核查证明的过程的信息  - `expirationDate[string]`: 定义了可验证证明到期的日期和时间。  - `id[string]`: 定义了可验证证明的唯一标识符  - `issuanceDate[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `issued[string]`: 定义了可验证证明的签发时间  - `issuer[string]`: 定义了可验证证明的签发者  - `proof[object]`: 包含有关证明的信息  - `type[array]`: 定义了可验证凭证的类型  - `validFrom[string]`: 定义日期和时间，当可验证的证明变得有效时。  - `validUntil[string]`: 定义了可验证证明到期的日期和时间。  <!-- /30-PropertiesList -->  
+<sup><sub>[*] 如果属性中没有类型，是因为它可能有多个类型或不同的格式/模式</sub></sup>。  
+- `credentialSchema[object]`: 包含有关可验证授权所依据的凭证模式（模板）的信息  	- `id[uri]`: 引用存储在（相关）可信模式注册中心（TSR）上的凭证模式（模板），可验证授权正是基于该模式进行的    
+- `credentialStatus[object]`: 包含有关如何验证可核实证明状态的信息（通过撤销和认可注册表，RER）。  	- `id[uri]`: 撤销和认可注册表 (RER) 中的参考记录，以便核查可核实证明的有效性    
+	- `statusListCredential[uri]`: 引用 StatusList2021Credential 的 URL    
+	- `statusListIndex[string]`: 以字符串形式表示的整数。基于零的索引值标识状态的位位置    
+	- `statusPurpose[string]`: 状态条目的目的    
+- `credentialSubject[object]`: 定义可验证 ID 所描述的主体信息  	- `EORI[string]`: 凭证主体的经济经营者注册和识别 (EORI)（在欧盟委员会第 1352/2013 号实施细则中提及    
+	- `LEI[string]`: 证书主体的正式法律实体标识符 (LEI)（委员会第 1247/2012 号实施细则 (EU) 中所述）    
+	- `SEED[string]`: 凭证主体的消费税数据交换系统 (SEED)（即理事会条例 (EC) No 389/2012 第 2(12)条规定的消费税编号）    
+	- `SIC[string]`: 证书主体的标准行业分类 (SIC) （欧洲议会和理事会第 2009/101/EC 号指令第 3(1)条。）    
+	- `VATRegistration[string]`: 证书主体的增值税号    
+	- `domainName[string]`: 证书主体域名    
+	- `id[uri]`: 定义可验证证明所述主体的 DID    
+	- `identifier[array]`: 待补说明    
+	- `legalAddress[string]`: 证书主体的正式法定地址    
+	- `legalName[string]`: 证书主体的正式法定名称    
+	- `legalPersonIdentifier[string]`: 凭证主体的国家/法定标识符（由发送成员国根据用于跨境身份识别的技术规范制作，并尽可能在时间上保持不变）    
+- `evidence[array]`: 包含有关签发可核查证明的程序的信息  - `expirationDate[date-time]`: 定义可验证证明过期的日期和时间  - `id[uri]`: 定义可验证证明的唯一标识符  - `issuanceDate[date-time]`: 定义可验证证明生效的日期和时间  - `issued[date-time]`: 定义可验证证明的签发时间  - `issuer[uri]`: 定义可验证证明的签发人  - `proof[object]`: 包含有关证明的信息  	- `created[date-time]`: 定义创建校样的日期和时间    
+	- `jws[string]`: 以 JWS 格式定义证明值    
+	- `proofPurpose[string]`: 确定证明的目的    
+	- `type[string]`: 定义证明类型    
+- `type[array]`: 定义可验证凭据类型  - `validFrom[date-time]`: 定义可验证证明生效的日期和时间  - `validUntil[date-time]`: 定义可验证证明过期的日期和时间  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
 - `credentialSubject`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-源自EBSI json模式的数据模型https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。@context属性已从定义中删除，因为它在NGSI-LD中是强制性的，不需要明确记录。只有在关键值链接数据中才有这个例子  
+源自 EBSI json 模式的数据模型 https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。@context 属性已从定义中删除，因为它在 NGSI-LD 中是强制性的，不需要明确记录。仅提供键值链接数据中的示例  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
-## 数据模型的属性描述  
-按字母顺序排列（点击查看详情）。  
+## 属性的数据模型描述  
+按字母顺序排列（点击查看详情）  
 <!-- /50-DataModelHeader -->  
 <!-- 60-ModelYaml -->  
 <details><summary><strong>full yaml details</strong></summary>    
@@ -36,14 +56,18 @@ LegalEntity:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines credential schema type    
+          description: Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -54,25 +78,35 @@ LegalEntity:
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListCredential:    
-          description: Property. URL referencing the StatusList2021Credential    
+          description: URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListIndex:    
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusPurpose:    
-          description: Property. Purpose of the status entry    
+          description: Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the Verifiable Credential status type    
+          description: Defines the Verifiable Credential status type    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -83,55 +117,85 @@ LegalEntity:
       description: Defines information about the subject that is described by the Verifiable ID    
       properties:    
         EORI:    
-          description: Property. Economic Operator Registration and Identification (EORI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1352/2013)    
+          description: Economic Operator Registration and Identification (EORI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1352/2013)    
           type: string    
+          x-ngsi:    
+            type: Property    
         LEI:    
-          description: Property. Official legal entity identifier (LEI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1247/2012)    
+          description: Official legal entity identifier (LEI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1247/2012)    
           type: string    
+          x-ngsi:    
+            type: Property    
         SEED:    
-          description: Property. System for Exchange of Excise Data (SEED) of Credential Subject (i.e. excise number provided in Article 2(12) of Council Regulation (EC) No 389/2012)    
+          description: System for Exchange of Excise Data (SEED) of Credential Subject (i.e. excise number provided in Article 2(12) of Council Regulation (EC) No 389/2012)    
           type: string    
+          x-ngsi:    
+            type: Property    
         SIC:    
-          description: Property. Standard Industrial Classification (SIC) of Credential Subject (Article 3(1) of Directive 2009/101/EC of the European Parliament and of the Council.)    
+          description: Standard Industrial Classification (SIC) of Credential Subject (Article 3(1) of Directive 2009/101/EC of the European Parliament and of the Council.)    
           type: string    
+          x-ngsi:    
+            type: Property    
         VATRegistration:    
-          description: Property. VAT number  of Credential Subject    
+          description: VAT number  of Credential Subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         domainName:    
-          description: Property. Domain name  of Credential Subject    
+          description: Domain name  of Credential Subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         id:    
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation    
+          description: Defines the DID of the subject that is described by the Verifiable Attestation    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         identifier:    
-          description: Property. Description to be completed    
+          description: Description to be completed    
           items:    
             properties:    
               id:    
-                description: Property. Description to be completed    
+                description: Description to be completed    
                 format: uri    
                 type: string    
+                x-ngsi:    
+                  type: Property    
               schemeID:    
-                description: Property. Description to be completed    
+                description: Description to be completed    
                 type: string    
+                x-ngsi:    
+                  type: Property    
               value:    
-                description: Property. Description to be completed    
+                description: Description to be completed    
                 type: string    
+                x-ngsi:    
+                  type: Property    
             type: object    
           type: array    
+          x-ngsi:    
+            type: Property    
         legalAddress:    
-          description: Property. Official legal address of Credential Subject    
+          description: Official legal address of Credential Subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         legalName:    
-          description: Property. Official legal name of Credential Subject    
+          description: Official legal name of Credential Subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         legalPersonIdentifier:    
-          description: Property. National/Legal Identifier of Credential Subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
+          description: National/Legal Identifier of Credential Subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
           type: string    
+          x-ngsi:    
+            type: Property    
         taxReference:    
-          description: Property. Official tax reference number of Credential Subject    
+          description: Official tax reference number of Credential Subject    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - legalName    
@@ -144,25 +208,35 @@ LegalEntity:
         properties:    
           documentPresence:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           evidenceDocument:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           id:    
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found'    
             type: string    
+            x-ngsi:    
+              type: Property    
           subjectPresence:    
-            description: Property. Description to be completed    
+            description: Description to be completed    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the evidence type    
+            description: Defines the evidence type    
             items:    
               type: string    
             type: array    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
@@ -204,21 +278,31 @@ LegalEntity:
       description: Contains information about the proof    
       properties:    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -262,11 +346,11 @@ LegalEntity:
 <!-- 70-MiddleNotes -->  
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
-## ＃＃＃＃有效载荷的例子  
-不提供JSON-LD格式的LegalEntity的例子作为key-values。当使用`options=keyValues`时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
-不提供JSON-LD格式的LegalEntity的例子，因为它是规范化的。当不使用选项时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
-#### LegalEntity NGSI-LD关键值示例  
-这里有一个JSON-LD格式的LegalEntity作为key-values的例子。当使用`options=keyValues`时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
+## 有效载荷示例  
+以 JSON-LD 格式作为键值的 LegalEntity 示例不可用。当使用 `options=keyValues` 时，它与 NGSI-v2 兼容，并返回单个实体的上下文数据。  
+未提供规范化的 JSON-LD 格式 LegalEntity 示例。在不使用选项时，它与 NGSI-v2 兼容，并返回单个实体的上下文数据。  
+#### LegalEntity NGSI-LD 键值示例  
+下面是一个以 JSON-LD 格式作为键值的 LegalEntity 示例。当使用 `options=keyValues` 时，它与 NGSI-LD 兼容，并返回单个实体的上下文数据。  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
@@ -320,12 +404,12 @@ LegalEntity:
 }  
 ```  
 </details>  
-不提供JSON-LD格式的LegalEntity的例子，因为它是规范化的。当不使用选项时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
+不提供规范化的 JSON-LD 格式 LegalEntity 示例。在不使用选项时，它与 NGSI-LD 兼容，并返回单个实体的上下文数据。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
 <!-- 95-Units -->  
-参见[常见问题10](https://smartdatamodels.org/index.php/faqs/)，以获得关于如何处理量级单位的答案。  
+请参阅 [FAQ 10](https://smartdatamodels.org/index.php/faqs/)，获取如何处理幅度单位的答案。  
 <!-- /95-Units -->  
 <!-- 97-LastFooter -->  
 ---  
