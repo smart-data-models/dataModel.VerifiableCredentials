@@ -15,7 +15,13 @@
 ## List of properties  
 
 <sup><sub>[*] If there is not a type in an attribute is because it could have several types or different formats/patterns</sub></sup>  
-- `holder[string]`: Defines unique identifier of the party who shares the Verifiable Presentation  - `proof[object]`: Contains information about the proof  - `type[array]`: Defines the Verifiable Presentation type  - `verifiableCredential[array]`: Contains the personal information intended to be shared  <!-- /30-PropertiesList -->  
+- `holder[string]`: Defines unique identifier of the party who shares the Verifiable Presentation  - `proof[object]`: Contains information about the proof  	- `challenge[string]`: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+	- `created[date-time]`: Defines the date and time, when the proof has been created    
+	- `domain[hostname]`: Defines a string value that specifies the operational domain of a digital proof    
+	- `jws[string]`: Defines the proof value in JWS format    
+	- `proofPurpose[string]`: Defines the purpose of the proof    
+	- `type[string]`: Defines the proof type    
+- `type[array]`: Defines the Verifiable Presentation type  - `verifiableCredential[array]`: Contains the personal information intended to be shared  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Required properties  
 - `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
@@ -41,28 +47,42 @@ Presentation:
       description: Contains information about the proof    
       properties:    
         challenge:    
-          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
           type: string    
+          x-ngsi:    
+            type: Property    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         domain:    
-          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          description: Defines a string value that specifies the operational domain of a digital proof    
           format: hostname    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -83,56 +103,54 @@ Presentation:
       description: Contains the personal information intended to be shared    
       items:    
         oneOf:    
-          - credentialSchema:    
-              description: Property. Description to be completed    
-              properties:    
-                id:    
-                  description: Property. Description to be completed    
-                  type: string    
-                type:    
-                  description: Property. Description to be completed    
-                  type: string    
-              type: object    
-            properties:    
-              credentialSubject:    
-                dateOfBirth:    
-                  description: Property. Description to be completed    
-                  format: Date    
-                  type: string    
-                familyName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                firstName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                id:    
-                  description: Property. Description to be completed    
-                  format: uri    
-                  type: string    
-                personalIdentifier:    
-                  description: Property. Description to be completed    
-                  type: string    
+          - credentialSubject:    
+              dateOfBirth:    
+                description: Property. Description to be completed    
+                format: Date    
+                type: string    
+              familyName:    
+                description: Property. Description to be completed    
+                type: string    
+              firstName:    
+                description: Property. Description to be completed    
+                type: string    
               id:    
                 description: Property. Description to be completed    
                 format: uri    
                 type: string    
-              issuanceDate:    
-                description: Property. Description to be completed    
-                format: date-time    
-                type: string    
-              issuer:    
+              personalIdentifier:    
                 description: Property. Description to be completed    
                 type: string    
-              type:    
-                description: Property. Description to be completed    
-                items:    
-                  type: string    
-                type: array    
-              validFrom:    
-                description: Property. Description to be completed    
-                format: date-time    
+            id:    
+              description: Description to be completed    
+              format: uri    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuanceDate:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuer:    
+              description: Description to be completed    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            type:    
+              description: Description to be completed    
+              items:    
                 type: string    
-            type: object    
+              type: array    
+              x-ngsi:    
+                type: Property    
+            validFrom:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
           - type: string    
       type: array    
       x-ngsi:    
