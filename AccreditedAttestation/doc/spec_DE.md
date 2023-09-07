@@ -15,12 +15,22 @@
 ## Liste der Eigenschaften  
 
 <sup><sub>[*] Wenn es für ein Attribut keinen Typ gibt, kann es mehrere Typen oder verschiedene Formate/Muster haben</sub></sup>.  
-- `credentialSchema[object]`: Enthält Informationen über das Berechtigungsschema (Vorlage), auf dem die überprüfbare Berechtigung basiert  - `credentialStatus[object]`: Enthält Informationen darüber, wie der Status der überprüfbaren Bescheinigung überprüft werden kann (über das Register für Widerrufe und Vermerke, RER)  - `credentialSubject[object]`: Definiert Informationen über das Subjekt, das durch die überprüfbare Bescheinigung beschrieben wird  - `evidence[array]`: Enthält Informationen über den Prozess, der zur Ausstellung der überprüfbaren Bescheinigung geführt hat  - `expirationDate[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  - `id[string]`: Definiert den eindeutigen Bezeichner der überprüfbaren Bescheinigung  - `issuanceDate[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `issued[string]`: Legt fest, wann die überprüfbare Bescheinigung ausgestellt wurde  - `issuer[string]`: Legt den Aussteller der prüfbaren Bescheinigung fest  - `proof[object]`: Enthält Informationen über den Nachweis  - `termsOfUse[array]`: Enthält die Bedingungen, unter denen die akkreditierte überprüfbare Bescheinigung ausgestellt wurde  - `type[array]`: Definiert den Typ der überprüfbaren Bescheinigung  - `validFrom[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `validUntil[string]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Enthält Informationen über das Berechtigungsschema (Vorlage), auf dem die überprüfbare Berechtigung basiert  	- `id[uri]`: Verweist auf das im (relevanten) Register der vertrauenswürdigen Schemata (TSR) gespeicherte Berechtigungsschema (Vorlage), auf dem die überprüfbare Berechtigung beruht    
+- `credentialStatus[object]`: Enthält Informationen darüber, wie der Status der überprüfbaren Bescheinigung überprüft werden kann (über das Register für Widerrufe und Bestätigungen, RER)  	- `id[uri]`: Referenzdatensatz im Register für Widerrufe und Vermerke (RER) zur Überprüfung der Gültigkeit einer überprüfbaren Bescheinigung    
+	- `statusListCredential[uri]`: URL, die auf die StatusList2021Credential verweist    
+	- `statusListIndex[string]`: Ganzzahl, ausgedrückt als Zeichenkette. Der auf Null basierende Indexwert identifiziert die Bitposition des Status    
+	- `statusPurpose[string]`: Zweck des Statuseintrags    
+- `credentialSubject[object]`: Definiert Informationen über das Subjekt, das durch die überprüfbare Bescheinigung beschrieben wird  	  
+- `evidence[array]`: Enthält Informationen über den Prozess, der zur Ausstellung der überprüfbaren Bescheinigung geführt hat  - `expirationDate[date-time]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  - `id[uri]`: Definiert den eindeutigen Bezeichner der überprüfbaren Bescheinigung  - `issuanceDate[date-time]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `issued[date-time]`: Legt fest, wann die überprüfbare Bescheinigung ausgestellt wurde  - `issuer[uri]`: Legt den Aussteller der prüfbaren Bescheinigung fest  - `proof[object]`: Enthält Informationen über den Nachweis  	- `created[date-time]`: Legt das Datum und die Uhrzeit fest, wann der Proof erstellt wurde    
+	- `jws[string]`: Definiert den Proof-Wert im JWS-Format    
+	- `proofPurpose[string]`: Definiert den Zweck des Nachweises    
+	- `type[string]`: Definiert den Beweistyp    
+- `termsOfUse[array]`: Enthält die Bedingungen, unter denen die akkreditierte überprüfbare Bescheinigung ausgestellt wurde  - `type[array]`: Definiert den Typ der überprüfbaren Bescheinigung  - `validFrom[date-time]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung gültig wird  - `validUntil[date-time]`: Legt das Datum und die Uhrzeit fest, zu der die überprüfbare Bescheinigung abläuft  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Erforderliche Eigenschaften  
 <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-Datenmodelle, die von EBSI-Json-Schemata abgeleitet sind https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Das Attribut @context wurde aus der Definition entfernt, da es in der NGSI-LD obligatorisch ist und nicht explizit dokumentiert werden muss. Nur das Beispiel in Key Values Linked Data verfügbar  
+Datenmodelle, die von EBSI-Json-Schemata abgeleitet sind https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas. Das Attribut @context wurde aus der Definition entfernt, da es in NGSI-LD obligatorisch ist und nicht explizit dokumentiert werden muss. Nur das Beispiel in Key Values Linked Data verfügbar  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## Datenmodell Beschreibung der Eigenschaften  
@@ -36,14 +46,18 @@ AccreditedAttestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines credential schema type    
+          description: Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -54,25 +68,35 @@ AccreditedAttestation:
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListCredential:    
-          description: Property. URL referencing the StatusList2021Credential    
+          description: URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListIndex:    
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusPurpose:    
-          description: Property. Purpose of the status entry    
+          description: Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the Verifiable Credential status type    
+          description: Defines the Verifiable Credential status type    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -83,9 +107,11 @@ AccreditedAttestation:
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
         id:    
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation    
+          description: Defines the DID of the subject that is described by the Verifiable Attestation    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
       type: object    
       x-ngsi:    
         type: Property    
@@ -95,25 +121,35 @@ AccreditedAttestation:
         properties:    
           documentPresence:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           evidenceDocument:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           id:    
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found'    
             type: string    
+            x-ngsi:    
+              type: Property    
           subjectPresence:    
-            description: Property. Description to be completed    
+            description: Description to be completed    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the evidence type    
+            description: Defines the evidence type    
             items:    
               type: string    
             type: array    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
@@ -155,21 +191,31 @@ AccreditedAttestation:
       description: Contains information about the proof    
       properties:    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -182,19 +228,25 @@ AccreditedAttestation:
     termsOfUse:    
       description: Contains the terms under which the Accredited Verifiable Attestation was issued    
       items:    
-        description: Property. Description to be completed    
+        description: Description to be completed    
         properties:    
           id:    
-            description: Property. Contains a URL that points to where more information about this instance of terms of use can be found.    
+            description: Contains a URL that points to where more information about this instance of terms of use can be found    
             format: uri    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the type of terms of use.    
+            description: Defines the type of terms of use    
             type: string    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
         type: object    
+        x-ngsi:    
+          type: Property    
       type: array    
       x-ngsi:    
         type: Property    
@@ -232,7 +284,7 @@ AccreditedAttestation:
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
 ## Beispiel-Nutzlasten  
-Nicht verfügbar ist das Beispiel einer AccreditedAttestation im JSON-LD-Format als Key-Values. Dies ist mit NGSI-v2 kompatibel, wenn `options=keyValues` verwendet wird und liefert die Kontextdaten einer einzelnen Entität.  
+Nicht verfügbar ist das Beispiel einer AccreditedAttestation im JSON-LD-Format als Key-Values. Dies ist kompatibel mit NGSI-v2, wenn `options=keyValues` verwendet wird und liefert die Kontextdaten einer einzelnen Entität.  
 Nicht verfügbar ist das Beispiel einer AccreditedAttestation im JSON-LD-Format in normalisierter Form. Dies ist kompatibel mit NGSI-v2, wenn keine Optionen verwendet werden, und liefert die Kontextdaten einer einzelnen Entität.  
 #### AccreditedAttestation NGSI-LD key-values Beispiel  
 Hier ist ein Beispiel für eine AccreditedAttestation im JSON-LD-Format als Key-Values. Dies ist mit NGSI-LD kompatibel, wenn `options=keyValues` verwendet wird und liefert die Kontextdaten einer einzelnen Entität.  
@@ -271,7 +323,7 @@ AccreditedAttestation:
 }  
 ```  
 </details>  
-Nicht verfügbar ist das Beispiel einer AccreditedAttestation im JSON-LD-Format in normalisierter Form. Dies ist mit NGSI-LD kompatibel, wenn keine Optionen verwendet werden, und liefert die Kontextdaten einer einzelnen Entität.  
+Nicht verfügbar ist das Beispiel einer AccreditedAttestation im JSON-LD-Format in normalisierter Form. Dies ist kompatibel mit NGSI-LD, wenn keine Optionen verwendet werden, und liefert die Kontextdaten einer einzelnen Entität.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
