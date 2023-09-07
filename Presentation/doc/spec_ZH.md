@@ -1,30 +1,36 @@
 <!-- 10-Header -->  
 [![Smart Data Models](https://smartdatamodels.org/wp-content/uploads/2022/01/SmartDataModels_logo.png "Logo")](https://smartdatamodels.org)  
-实体。介绍  
+实体：列报  
 =====<!-- /10-Header -->  
 <!-- 15-License -->  
 [开放许可](https://github.com/smart-data-models//dataModel.VerifiableCredentials/blob/master/Presentation/LICENSE.md)  
 [文件自动生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
-全球描述。**EBSI可验证的演示文稿的格式**。  
-版本：0.0.1  
+全球说明：**EBSI 可验证演示示例**  
+版本： 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
-##属性列表  
+## 属性列表  
 
-<sup><sub>[*] 如果一个属性中没有一个类型，是因为它可能有几种类型或不同的格式/模式</sub></sup>。  
-- `holder[string]`: 定义了共享可验证演示文稿的一方的唯一标识符。  - `proof[object]`: 包含有关证明的信息  - `type[array]`: 定义了可验证的演示文稿类型  - `verifiableCredential[array]`: 包含打算共享的个人信息  <!-- /30-PropertiesList -->  
+<sup><sub>[*] 如果属性中没有类型，是因为它可能有多个类型或不同的格式/模式</sub></sup>。  
+- `holder[string]`: 定义共享可验证演示的一方的唯一标识符  - `proof[object]`: 包含有关证明的信息  	- `challenge[string]`: 定义随机或伪随机值，某些身份验证协议使用该值来缓解重放攻击    
+	- `created[date-time]`: 定义创建校样的日期和时间    
+	- `domain[hostname]`: 定义一个字符串值，用于指定数字证书的操作域    
+	- `jws[string]`: 以 JWS 格式定义证明值    
+	- `proofPurpose[string]`: 确定证明的目的    
+	- `type[string]`: 定义证明类型    
+- `type[array]`: 定义可验证演示类型  - `verifiableCredential[array]`: 包含打算共享的个人信息  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 所需属性  
 - `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-源自EBSI json模式的数据模型https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。@context属性已从定义中删除，因为它在NGSI-LD中是强制性的，不需要明确记录。只有在关键值链接数据中才有这个例子  
+源自 EBSI json 模式的数据模型 https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas。@context 属性已从定义中删除，因为它在 NGSI-LD 中是强制性的，不需要明确记录。仅提供键值链接数据中的示例  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
-## 数据模型的属性描述  
-按字母顺序排列（点击查看详情）。  
+## 属性的数据模型描述  
+按字母顺序排列（点击查看详情）  
 <!-- /50-DataModelHeader -->  
 <!-- 60-ModelYaml -->  
 <details><summary><strong>full yaml details</strong></summary>    
@@ -41,28 +47,42 @@ Presentation:
       description: Contains information about the proof    
       properties:    
         challenge:    
-          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
           type: string    
+          x-ngsi:    
+            type: Property    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         domain:    
-          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          description: Defines a string value that specifies the operational domain of a digital proof    
           format: hostname    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -83,56 +103,54 @@ Presentation:
       description: Contains the personal information intended to be shared    
       items:    
         oneOf:    
-          - credentialSchema:    
-              description: Property. Description to be completed    
-              properties:    
-                id:    
-                  description: Property. Description to be completed    
-                  type: string    
-                type:    
-                  description: Property. Description to be completed    
-                  type: string    
-              type: object    
-            properties:    
-              credentialSubject:    
-                dateOfBirth:    
-                  description: Property. Description to be completed    
-                  format: Date    
-                  type: string    
-                familyName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                firstName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                id:    
-                  description: Property. Description to be completed    
-                  format: uri    
-                  type: string    
-                personalIdentifier:    
-                  description: Property. Description to be completed    
-                  type: string    
+          - credentialSubject:    
+              dateOfBirth:    
+                description: Property. Description to be completed    
+                format: Date    
+                type: string    
+              familyName:    
+                description: Property. Description to be completed    
+                type: string    
+              firstName:    
+                description: Property. Description to be completed    
+                type: string    
               id:    
                 description: Property. Description to be completed    
                 format: uri    
                 type: string    
-              issuanceDate:    
-                description: Property. Description to be completed    
-                format: date-time    
-                type: string    
-              issuer:    
+              personalIdentifier:    
                 description: Property. Description to be completed    
                 type: string    
-              type:    
-                description: Property. Description to be completed    
-                items:    
-                  type: string    
-                type: array    
-              validFrom:    
-                description: Property. Description to be completed    
-                format: date-time    
+            id:    
+              description: Description to be completed    
+              format: uri    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuanceDate:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuer:    
+              description: Description to be completed    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            type:    
+              description: Description to be completed    
+              items:    
                 type: string    
-            type: object    
+              type: array    
+              x-ngsi:    
+                type: Property    
+            validFrom:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
           - type: string    
       type: array    
       x-ngsi:    
@@ -154,11 +172,11 @@ Presentation:
 <!-- 70-MiddleNotes -->  
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
-## ＃＃＃＃有效载荷的例子  
-不提供JSON-LD格式的Presentation的例子，作为key-values。当使用`options=keyValues`时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
-不提供JSON-LD格式的规范化的演示文稿的例子。当不使用选项时，这与NGSI-v2兼容，并返回单个实体的上下文数据。  
-#### Presentation NGSI-LD key-values 示例  
-这里是一个以JSON-LD格式作为key-values的演示文稿的例子。当使用`options=keyValues`时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
+## 有效载荷示例  
+不可用 JSON-LD 格式的 Presentation 示例作为 key-values。当使用 "options=keyValues "时，它与 NGSI-v2 兼容，并返回单个实体的上下文数据。  
+没有规范化 JSON-LD 格式的演示示例。当不使用选项时，它与 NGSI-v2 兼容，并返回单个实体的上下文数据。  
+#### 演示 NGSI-LD 键值示例  
+下面是一个以 JSON-LD 格式作为键值的 Presentation 示例。当使用 "options=keyValues "时，它与 NGSI-LD 兼容，并返回单个实体的上下文数据。  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
@@ -226,12 +244,12 @@ Presentation:
 }  
 ```  
 </details>  
-不提供JSON-LD格式的规范化的演示文稿的例子。当不使用选项时，这与NGSI-LD兼容，并返回单个实体的上下文数据。  
+没有规范化 JSON-LD 格式的 Presentation 示例。在不使用选项时，它与 NGSI-LD 兼容，并返回单个实体的上下文数据。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
 <!-- 95-Units -->  
-参见[常见问题10](https://smartdatamodels.org/index.php/faqs/)，以获得关于如何处理量级单位的答案。  
+请参阅 [FAQ 10](https://smartdatamodels.org/index.php/faqs/)，获取如何处理幅度单位的答案。  
 <!-- /95-Units -->  
 <!-- 97-LastFooter -->  
 ---  
