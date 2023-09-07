@@ -15,7 +15,13 @@
 ## Liste der Eigenschaften  
 
 <sup><sub>[*] Wenn es für ein Attribut keinen Typ gibt, kann es mehrere Typen oder verschiedene Formate/Muster haben</sub></sup>.  
-- `holder[string]`: Definiert den eindeutigen Identifikator der Partei, die die überprüfbare Präsentation teilt  - `proof[object]`: Enthält Informationen über den Nachweis  - `type[array]`: Definiert den Typ der überprüfbaren Präsentation  - `verifiableCredential[array]`: Enthält die persönlichen Informationen, die weitergegeben werden sollen  <!-- /30-PropertiesList -->  
+- `holder[string]`: Definiert den eindeutigen Identifikator der Partei, die die überprüfbare Präsentation teilt  - `proof[object]`: Enthält Informationen über den Nachweis  	- `challenge[string]`: Definiert einen Zufalls- oder Pseudozufallswert, der von einigen Authentifizierungsprotokollen verwendet wird, um Wiederholungsangriffe abzuschwächen    
+	- `created[date-time]`: Legt das Datum und die Uhrzeit fest, wann der Proof erstellt wurde    
+	- `domain[hostname]`: Definiert einen String-Wert, der den operativen Bereich eines digitalen Beweises angibt    
+	- `jws[string]`: Definiert den Proof-Wert im JWS-Format    
+	- `proofPurpose[string]`: Definiert den Zweck des Nachweises    
+	- `type[string]`: Definiert den Beweistyp    
+- `type[array]`: Definiert den Typ der überprüfbaren Präsentation  - `verifiableCredential[array]`: Enthält die persönlichen Informationen, die weitergegeben werden sollen  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Erforderliche Eigenschaften  
 - `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
@@ -41,28 +47,42 @@ Presentation:
       description: Contains information about the proof    
       properties:    
         challenge:    
-          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
           type: string    
+          x-ngsi:    
+            type: Property    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         domain:    
-          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          description: Defines a string value that specifies the operational domain of a digital proof    
           format: hostname    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -83,56 +103,54 @@ Presentation:
       description: Contains the personal information intended to be shared    
       items:    
         oneOf:    
-          - credentialSchema:    
-              description: Property. Description to be completed    
-              properties:    
-                id:    
-                  description: Property. Description to be completed    
-                  type: string    
-                type:    
-                  description: Property. Description to be completed    
-                  type: string    
-              type: object    
-            properties:    
-              credentialSubject:    
-                dateOfBirth:    
-                  description: Property. Description to be completed    
-                  format: Date    
-                  type: string    
-                familyName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                firstName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                id:    
-                  description: Property. Description to be completed    
-                  format: uri    
-                  type: string    
-                personalIdentifier:    
-                  description: Property. Description to be completed    
-                  type: string    
+          - credentialSubject:    
+              dateOfBirth:    
+                description: Property. Description to be completed    
+                format: Date    
+                type: string    
+              familyName:    
+                description: Property. Description to be completed    
+                type: string    
+              firstName:    
+                description: Property. Description to be completed    
+                type: string    
               id:    
                 description: Property. Description to be completed    
                 format: uri    
                 type: string    
-              issuanceDate:    
-                description: Property. Description to be completed    
-                format: date-time    
-                type: string    
-              issuer:    
+              personalIdentifier:    
                 description: Property. Description to be completed    
                 type: string    
-              type:    
-                description: Property. Description to be completed    
-                items:    
-                  type: string    
-                type: array    
-              validFrom:    
-                description: Property. Description to be completed    
-                format: date-time    
+            id:    
+              description: Description to be completed    
+              format: uri    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuanceDate:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuer:    
+              description: Description to be completed    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            type:    
+              description: Description to be completed    
+              items:    
                 type: string    
-            type: object    
+              type: array    
+              x-ngsi:    
+                type: Property    
+            validFrom:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
           - type: string    
       type: array    
       x-ngsi:    
@@ -226,7 +244,7 @@ Presentation:
 }  
 ```  
 </details>  
-Nicht verfügbar ist das Beispiel einer Präsentation im JSON-LD-Format in normalisierter Form. Dies ist kompatibel mit NGSI-LD, wenn keine Optionen verwendet werden, und liefert die Kontextdaten einer einzelnen Entität.  
+Nicht verfügbar ist das Beispiel einer Präsentation im JSON-LD-Format in normalisierter Form. Dies ist mit NGSI-LD kompatibel, wenn keine Optionen verwendet werden, und liefert die Kontextdaten einer einzelnen Entität.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
