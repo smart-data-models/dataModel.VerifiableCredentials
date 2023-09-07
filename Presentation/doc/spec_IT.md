@@ -15,7 +15,13 @@
 ## Elenco delle proprietà  
 
 <sup><sub>[*] Se non c'è un tipo in un attributo è perché potrebbe avere diversi tipi o diversi formati/modelli</sub></sup>.  
-- `holder[string]`: Definisce l'identificativo univoco della parte che condivide la presentazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  - `type[array]`: Definisce il tipo di presentazione verificabile  - `verifiableCredential[array]`: Contiene le informazioni personali che si intende condividere  <!-- /30-PropertiesList -->  
+- `holder[string]`: Definisce l'identificativo univoco della parte che condivide la Presentazione verificabile.  - `proof[object]`: Contiene informazioni sulla prova  	- `challenge[string]`: Definisce un valore casuale o pseudocasuale utilizzato da alcuni protocolli di autenticazione per mitigare gli attacchi replay.    
+	- `created[date-time]`: Definisce la data e l'ora in cui è stata creata la prova.    
+	- `domain[hostname]`: Definisce un valore stringa che specifica il dominio operativo di una prova digitale.    
+	- `jws[string]`: Definisce il valore della prova in formato JWS    
+	- `proofPurpose[string]`: Definisce lo scopo della prova    
+	- `type[string]`: Definisce il tipo di prova    
+- `type[array]`: Definisce il tipo di presentazione verificabile  - `verifiableCredential[array]`: Contiene le informazioni personali che si intende condividere  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Proprietà richieste  
 - `holder`  - `type`  - `verifiableCredential`  <!-- /35-RequiredProperties -->  
@@ -41,28 +47,42 @@ Presentation:
       description: Contains information about the proof    
       properties:    
         challenge:    
-          description: Property. Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
+          description: Defines a random or pseudo-random value used by some authentication protocols to mitigate replay attacks    
           type: string    
+          x-ngsi:    
+            type: Property    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         domain:    
-          description: Property. Defines a string value that specifies the operational domain of a digital proof    
+          description: Defines a string value that specifies the operational domain of a digital proof    
           format: hostname    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -83,56 +103,54 @@ Presentation:
       description: Contains the personal information intended to be shared    
       items:    
         oneOf:    
-          - credentialSchema:    
-              description: Property. Description to be completed    
-              properties:    
-                id:    
-                  description: Property. Description to be completed    
-                  type: string    
-                type:    
-                  description: Property. Description to be completed    
-                  type: string    
-              type: object    
-            properties:    
-              credentialSubject:    
-                dateOfBirth:    
-                  description: Property. Description to be completed    
-                  format: Date    
-                  type: string    
-                familyName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                firstName:    
-                  description: Property. Description to be completed    
-                  type: string    
-                id:    
-                  description: Property. Description to be completed    
-                  format: uri    
-                  type: string    
-                personalIdentifier:    
-                  description: Property. Description to be completed    
-                  type: string    
+          - credentialSubject:    
+              dateOfBirth:    
+                description: Property. Description to be completed    
+                format: Date    
+                type: string    
+              familyName:    
+                description: Property. Description to be completed    
+                type: string    
+              firstName:    
+                description: Property. Description to be completed    
+                type: string    
               id:    
                 description: Property. Description to be completed    
                 format: uri    
                 type: string    
-              issuanceDate:    
-                description: Property. Description to be completed    
-                format: date-time    
-                type: string    
-              issuer:    
+              personalIdentifier:    
                 description: Property. Description to be completed    
                 type: string    
-              type:    
-                description: Property. Description to be completed    
-                items:    
-                  type: string    
-                type: array    
-              validFrom:    
-                description: Property. Description to be completed    
-                format: date-time    
+            id:    
+              description: Description to be completed    
+              format: uri    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuanceDate:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            issuer:    
+              description: Description to be completed    
+              type: string    
+              x-ngsi:    
+                type: Property    
+            type:    
+              description: Description to be completed    
+              items:    
                 type: string    
-            type: object    
+              type: array    
+              x-ngsi:    
+                type: Property    
+            validFrom:    
+              description: Description to be completed    
+              format: date-time    
+              type: string    
+              x-ngsi:    
+                type: Property    
           - type: string    
       type: array    
       x-ngsi:    
@@ -226,7 +244,7 @@ Presentation:
 }  
 ```  
 </details>  
-Non è disponibile l'esempio di una Presentazione in formato JSON-LD normalizzato. Questo è compatibile con NGSI-LD quando non si utilizzano le opzioni e restituisce i dati di contesto di una singola entità.  
+Non è disponibile l'esempio di una Presentazione in formato JSON-LD normalizzato. Questo è compatibile con NGSI-LD quando non si utilizzano opzioni e restituisce i dati di contesto di una singola entità.  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
