@@ -1,30 +1,40 @@
 <!-- 10-Header -->  
 [![Smart Data Models](https://smartdatamodels.org/wp-content/uploads/2022/01/SmartDataModels_logo.png "Logo")](https://smartdatamodels.org)  
-事業者名認定検査機関  
+エンティティ認定機関  
 ==========<!-- /10-Header -->  
 <!-- 15-License -->  
-[オープンライセンス](https://github.com/smart-data-models//dataModel.VerifiableCredentials/blob/master/AccreditedAttestation/LICENSE.md)  
-[ドキュメント自動生成](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
+[オープン・ライセンス](https://github.com/smart-data-models//dataModel.VerifiableCredentials/blob/master/AccreditedAttestation/LICENSE.md)  
+[文書は自動的に生成される](https://docs.google.com/presentation/d/e/2PACX-1vTs-Ng5dIAwkg91oTTUdt8ua7woBXhPnwavZ0FxgR8BsAI_Ek3C5q97Nd94HS8KhP-r_quD4H0fgyt3/pub?start=false&loop=false&delayms=3000#slide=id.gb715ace035_0_60)  
 <!-- /15-License -->  
 <!-- 20-Description -->  
-グローバルな記述です。**EBSI 認定検証可能証明書のスキーマ**。  
+グローバルな記述EBSI 認定検証可能証明書のスキーマ** EBSI 認定検証可能証明書のスキーマ** EBSI 認定検証可能証明書のスキーマ  
 バージョン: 0.0.1  
 <!-- /20-Description -->  
 <!-- 30-PropertiesList -->  
 
-## プロパティ一覧  
+## プロパティのリスト  
 
-<sup><sub>[*] 属性にタイプがない場合、複数のタイプまたは異なるフォーマット/パターンを持つ可能性があるためです</sub></sup>。  
-- `credentialSchema[object]`: 検証可能な認証が基づいているクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  - `credentialStatus[object]`: 検証可能な証明の状態を確認する方法に関する情報を含む（RER（Revocation and Endorsement Registry）経由）。  - `credentialSubject[object]`: 検証可能な証明書によって記述される対象者に関する情報を定義する。  - `evidence[array]`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate[string]`: 検証可能証明書の有効期限を定義する。  - `id[string]`: 検証可能な証明の一意の識別子を定義する。  - `issuanceDate[string]`: 検証可能証明書が有効になる日時を定義する。  - `issued[string]`: 検証可能証明書がいつ発行されたかを定義する。  - `issuer[string]`: 検証可能証明書の発行者を定義する。  - `proof[object]`: 証明に関する情報が記載されています  - `termsOfUse[array]`: Accredited Verifiable Attestationの発行条件を含む。  - `type[array]`: 検証可能なクレデンシャルタイプを定義する  - `validFrom[string]`: 検証可能証明書が有効になる日時を定義する。  - `validUntil[string]`: 検証可能証明書の有効期限を定義する。  <!-- /30-PropertiesList -->  
+<sup><sub>[*] 属性に型がない場合は、複数の型があるか、異なるフォーマット/パターンがある可能性があるためです</sub></sup>。  
+- `credentialSchema[object]`: 検証可能な認証が基づくクレデンシャル・スキーマ（テンプレート）に関する情報が含まれる。  	- `id[uri]`: 検証可能な認可が基づく（関連する）信頼スキーマ・レジストリ（TSR）に格納されているクレ デンシャル・スキーマ（テンプレート）を参照する。    
+- `credentialStatus[object]`: 検証可能な証明のステータスを確認する方法に関する情報を含む（失効および裏書レジストリ（RER）を通じて）。  	- `id[uri]`: 検証可能な認証の有効性を検証できるようにするため、失効および裏書レジストリ（RER）の 記録を参照する。    
+	- `statusListCredential[uri]`: StatusList2021Credential を参照する URL。    
+	- `statusListIndex[string]`: 文字列として表現される整数。ゼロベースのインデックス値は、ステータスのビット位置を示す。    
+	- `statusPurpose[string]`: ステータスエントリーの目的    
+- `credentialSubject[object]`: 検証可能な証明によって記述される対象者に関する情報を定義する。  	  
+- `evidence[array]`: 検証可能な証明書の発行に至ったプロセスに関する情報を含む。  - `expirationDate[date-time]`: 検証可能証明の有効期限が切れる日時を定義する。  - `id[uri]`: 検証可能証明の一意な識別子を定義する。  - `issuanceDate[date-time]`: 検証可能な認証が有効になる日時を定義する。  - `issued[date-time]`: 検証可能な証明書がいつ発行されたかを定義する。  - `issuer[uri]`: 検証可能な証明の発行者を定義する。  - `proof[object]`: 証明に関する情報を含む  	- `created[date-time]`: プルーフが作成された日時を定義します。    
+	- `jws[string]`: JWSフォーマットで証明値を定義します。    
+	- `proofPurpose[string]`: 証明の目的を明確にする    
+	- `type[string]`: 証明タイプを定義する    
+- `termsOfUse[array]`: 認定検証可能証明書が発行された条件を含む。  - `type[array]`: 検証可能クレデンシャルタイプを定義する。  - `validFrom[date-time]`: 検証可能な認証が有効になる日時を定義する。  - `validUntil[date-time]`: 検証可能証明の有効期限が切れる日時を定義する。  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
-必要なプロパティ  
+必須プロパティ  
 <!-- /35-RequiredProperties -->  
 <!-- 40-RequiredProperties -->  
-EBSI jsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.context属性はNGSI-LDでは必須であり、明示的に文書化する必要がないため、定義から削除された。リンクデータのキーバリューの例のみ利用可能  
+EBSI jsonスキーマから派生したデータモデル https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas.context属性はNGSI-LDでは必須であり、明示的に文書化する必要がないため、定義から削除された。キー値リンクデータの例のみ利用可能  
 <!-- /40-RequiredProperties -->  
 <!-- 50-DataModelHeader -->  
 ## プロパティのデータモデル記述  
-アルファベット順に並びます（クリックで詳細へ）  
+アルファベット順（クリックで詳細表示）  
 <!-- /50-DataModelHeader -->  
 <!-- 60-ModelYaml -->  
 <details><summary><strong>full yaml details</strong></summary>    
@@ -36,14 +46,18 @@ AccreditedAttestation:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines credential schema type    
+          description: Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -54,25 +68,35 @@ AccreditedAttestation:
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListCredential:    
-          description: Property. URL referencing the StatusList2021Credential    
+          description: URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListIndex:    
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusPurpose:    
-          description: Property. Purpose of the status entry    
+          description: Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the Verifiable Credential status type    
+          description: Defines the Verifiable Credential status type    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -83,9 +107,11 @@ AccreditedAttestation:
       description: Defines information about the subject that is described by the Verifiable Attestation    
       properties:    
         id:    
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation    
+          description: Defines the DID of the subject that is described by the Verifiable Attestation    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
       type: object    
       x-ngsi:    
         type: Property    
@@ -95,25 +121,35 @@ AccreditedAttestation:
         properties:    
           documentPresence:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           evidenceDocument:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           id:    
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found'    
             type: string    
+            x-ngsi:    
+              type: Property    
           subjectPresence:    
-            description: Property. Description to be completed    
+            description: Description to be completed    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the evidence type    
+            description: Defines the evidence type    
             items:    
               type: string    
             type: array    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
@@ -155,21 +191,31 @@ AccreditedAttestation:
       description: Contains information about the proof    
       properties:    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
@@ -182,19 +228,25 @@ AccreditedAttestation:
     termsOfUse:    
       description: Contains the terms under which the Accredited Verifiable Attestation was issued    
       items:    
-        description: Property. Description to be completed    
+        description: Description to be completed    
         properties:    
           id:    
-            description: Property. Contains a URL that points to where more information about this instance of terms of use can be found.    
+            description: Contains a URL that points to where more information about this instance of terms of use can be found    
             format: uri    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the type of terms of use.    
+            description: Defines the type of terms of use    
             type: string    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
         type: object    
+        x-ngsi:    
+          type: Property    
       type: array    
       x-ngsi:    
         type: Property    
@@ -232,10 +284,10 @@ AccreditedAttestation:
 <!-- /70-MiddleNotes -->  
 <!-- 80-Examples -->  
 ## ペイロードの例  
-JSON-LD形式のAccreditedAttestationの例をkey-valuesとして利用できない。これは、`options=keyValues`を使用した場合にNGSI-v2と互換性があり、個々のエンティティのコンテキストデータを返します。  
-AccreditedAttestation を JSON-LD 形式で正規化した例は利用不可。オプションを使用しない場合のNGSI-v2との互換性があり、個々のエンティティのコンテキストデータを返す。  
-#### AccreditedAttestation NGSI-LD key-value Example  
-AccreditedAttestationをJSON-LD形式でkey-valuesにした例です。これは、`options=keyValues`を使用した場合にNGSI-LDと互換性があり、個々のエンティティのコンテキストデータが返されます。  
+JSON-LD形式のAccreditedAttestationの例をkey-valuesとして利用することはできない。これは NGSI-v2 と互換性があり、`options=keyValues` を使用すると個々のエンティティのコンテキストデータを返す。  
+正規化された JSON-LD 形式の AccreditedAttestation の例は利用できない。これは、オプションを使用しない場合、NGSI-v2 と互換性があり、個々のエンティティのコンテキスト・データを返す。  
+#### NGSI-LD キー値の例  
+JSON-LD形式のAccreditedAttestationのkey-valuesの例である。options=keyValues`を使うとNGSI-LDと互換性があり、個々のエンティティのコンテキストデータを返す。  
 <details><summary><strong>show/hide example</strong></summary>    
 ```json  
 {  
@@ -271,12 +323,12 @@ AccreditedAttestation:
 }  
 ```  
 </details>  
-AccreditedAttestation を JSON-LD 形式で正規化した例は存在しない。オプションを使用しない場合のNGSI-LDと互換性があり、個々のエンティティのコンテキストデータが返される。  
+正規化された JSON-LD 形式の AccreditedAttestation の例は利用できない。これは、オプションを使用しない場合の NGSI-LD と互換性があり、個々のエンティティのコンテキストデータを返します。  
 <!-- /80-Examples -->  
 <!-- 90-FooterNotes -->  
 <!-- /90-FooterNotes -->  
 <!-- 95-Units -->  
-マグニチュード単位の扱いについては、[FAQ 10](https://smartdatamodels.org/index.php/faqs/)を参照してください。  
+マグニチュード単位の扱い方については、[FAQ 10](https://smartdatamodels.org/index.php/faqs/)を参照のこと。  
 <!-- /95-Units -->  
 <!-- 97-LastFooter -->  
 ---  
