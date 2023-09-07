@@ -15,7 +15,24 @@
 ## Lista de propiedades  
 
 <sup><sub>[*] Si no hay un tipo en un atributo es porque puede tener varios tipos o diferentes formatos/patrones</sub></sup>.  
-- `credentialSchema[object]`: Contiene información sobre el esquema de credenciales (plantilla) en el que se basa la autorización verificable  - `credentialStatus[object]`: Contiene información sobre cómo verificar el estado de la atestación verificable (a través del Registro de Revocación y Refrendo, RER)  - `credentialSubject[object]`: Define información adicional sobre el sujeto descrito por el ID verificable.  - `evidence[array]`: Contiene información sobre el proceso que dio lugar a la emisión del certificado verificable  - `expirationDate[string]`: Define la fecha y hora en que expira el certificado verificable.  - `id[string]`: Define el identificador único del certificado verificable  - `issuanceDate[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `issued[string]`: Define cuándo se emitió el certificado verificable  - `issuer[string]`: Define el emisor del certificado verificable  - `proof[object]`: Contiene información sobre la prueba  - `type[array]`: Define el tipo de credencial verificable  - `validFrom[string]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `validUntil[string]`: Define la fecha y hora en que expira el certificado verificable.  <!-- /30-PropertiesList -->  
+- `credentialSchema[object]`: Contiene información sobre el esquema de credenciales (plantilla) en el que se basa la autorización verificable  	- `id[uri]`: Hace referencia al esquema de credenciales (plantilla) almacenado en el Registro de Esquemas de Confianza (TSR) (pertinente) en el que se basa la Autorización Verificable.    
+- `credentialStatus[object]`: Contiene información sobre cómo verificar el estado de la atestación verificable (a través del Registro de Revocación y Refrendo, RER)  	- `id[uri]`: Registro de referencias en el Registro de revocaciones y refrendos (RER) para permitir la verificación de la validez de un certificado verificable.    
+	- `statusListCredential[uri]`: URL que hace referencia a StatusList2021Credential    
+	- `statusListIndex[string]`: Número entero expresado como cadena. El valor del índice basado en cero identifica la posición del bit del estado    
+	- `statusPurpose[string]`: Finalidad de la entrada de estado    
+- `credentialSubject[object]`: Define información adicional sobre el sujeto descrito por el ID verificable.  	- `currentAddress[string]`: Define la dirección actual del sujeto de credenciales    
+	- `dateOfBirth[date]`: Define la fecha de nacimiento del sujeto de la credencial    
+	- `familyName[string]`: Define los apellidos actuales del sujeto de la credencial    
+	- `firstName[string]`: Define el(los) nombre(s) actual(es) del sujeto de la credencial    
+	- `gender[string]`: Define el sexo del sujeto de la credencial    
+	- `id[uri]`: Define el DID del sujeto descrito por el Atestado Verificable    
+	- `nameAndFamilyNameAtBirth[string]`: Define el nombre y los apellidos del sujeto de la credencial en el momento de su nacimiento    
+	- `personalIdentifier[string]`: Define el identificador nacional único del sujeto de la credencial (construido por el Estado miembro emisor de conformidad con las especificaciones técnicas a efectos de identificación transfronteriza y que es lo más persistente posible en el tiempo).    
+- `evidence[array]`: Contiene información sobre el proceso que dio lugar a la emisión del certificado verificable  - `expirationDate[date-time]`: Define la fecha y hora en que expira el certificado verificable.  - `id[uri]`: Define el identificador único del certificado verificable  - `issuanceDate[date-time]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `issued[date-time]`: Define cuándo se emitió el certificado verificable  - `issuer[uri]`: Define el emisor del certificado verificable  - `proof[object]`: Contiene información sobre la prueba  	- `created[date-time]`: Define la fecha y la hora de creación de la prueba.    
+	- `jws[string]`: Define el valor de la prueba en formato JWS    
+	- `proofPurpose[string]`: Define el objetivo de la prueba    
+	- `type[string]`: Define el tipo de prueba    
+- `type[array]`: Define el tipo de credencial verificable  - `validFrom[date-time]`: Define la fecha y hora en que el certificado verificable pasa a ser válido.  - `validUntil[date-time]`: Define la fecha y hora en que expira el certificado verificable.  <!-- /30-PropertiesList -->  
 <!-- 35-RequiredProperties -->  
 Propiedades requeridas  
 - `credentialSubject`  <!-- /35-RequiredProperties -->  
@@ -36,14 +53,18 @@ NaturalPerson:
       description: Contains information about the credential schema (template) on which the Verifiable Authorisation is based    
       properties:    
         id:    
-          description: Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
+          description: References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines credential schema type    
+          description: Defines credential schema type    
           enum:    
             - FullJsonSchemaValidator2021    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -54,25 +75,35 @@ NaturalPerson:
       description: 'Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)'    
       properties:    
         id:    
-          description: Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
+          description: References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListCredential:    
-          description: Property. URL referencing the StatusList2021Credential    
+          description: URL referencing the StatusList2021Credential    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusListIndex:    
-          description: Property. Integer expressed as a string. The zero based index value identifies the bit position of the status    
+          description: Integer expressed as a string. The zero based index value identifies the bit position of the status    
           type: string    
+          x-ngsi:    
+            type: Property    
         statusPurpose:    
-          description: Property. Purpose of the status entry    
+          description: Purpose of the status entry    
           enum:    
             - revocation    
             - suspension    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the Verifiable Credential status type    
+          description: Defines the Verifiable Credential status type    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - type    
@@ -83,34 +114,52 @@ NaturalPerson:
       description: Defines additional information about the subject that is described by the Verifiable ID    
       properties:    
         currentAddress:    
-          description: Property. Defines the current address of the credential subject    
+          description: Defines the current address of the credential subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         dateOfBirth:    
-          description: Property. Defines date of birth of the credential subject    
+          description: Defines date of birth of the credential subject    
           format: date    
           type: string    
+          x-ngsi:    
+            type: Property    
         familyName:    
-          description: Property. Defines current family name(s) of the credential subject    
+          description: Defines current family name(s) of the credential subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         firstName:    
-          description: Property. Defines current first name(s) of the credential subject    
+          description: Defines current first name(s) of the credential subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         gender:    
-          description: Property. Defines the gender of the credential subject    
+          description: Defines the gender of the credential subject    
           type: string    
+          x-ngsi:    
+            type: Property    
         id:    
-          description: Property. Defines the DID of the subject that is described by the Verifiable Attestation    
+          description: Defines the DID of the subject that is described by the Verifiable Attestation    
           format: uri    
           type: string    
+          x-ngsi:    
+            type: Property    
         nameAndFamilyNameAtBirth:    
-          description: Property. Defines the first and the family name(s) of the credential subject at the time of their birth    
+          description: Defines the first and the family name(s) of the credential subject at the time of their birth    
           type: string    
+          x-ngsi:    
+            type: Property    
         personalIdentifier:    
-          description: Property. Defines the unique national identifier of the credential subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
+          description: Defines the unique national identifier of the credential subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)    
           type: string    
+          x-ngsi:    
+            type: Property    
         placeOfBirth:    
-          description: Property. Defines the place where the credential subjectis born    
+          description: Defines the place where the credential subjectis born    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - id    
         - familyName    
@@ -126,25 +175,35 @@ NaturalPerson:
         properties:    
           documentPresence:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           evidenceDocument:    
             items:    
-              description: Property. Description to be completed    
+              description: Description to be completed    
               type: string    
+              x-ngsi:    
+                type: Property    
             type: array    
           id:    
-            description: 'Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.'    
+            description: 'If present, it MUST contain a URL that points to where more information about this instance of evidence can be found'    
             type: string    
+            x-ngsi:    
+              type: Property    
           subjectPresence:    
-            description: Property. Description to be completed    
+            description: Description to be completed    
             type: string    
+            x-ngsi:    
+              type: Property    
           type:    
-            description: Property. Defines the evidence type    
+            description: Defines the evidence type    
             items:    
               type: string    
             type: array    
+            x-ngsi:    
+              type: Property    
         required:    
           - id    
           - type    
@@ -186,21 +245,31 @@ NaturalPerson:
       description: Contains information about the proof    
       properties:    
         created:    
-          description: 'Property. Defines the date and time, when the proof has been created'    
+          description: 'Defines the date and time, when the proof has been created'    
           format: date-time    
           type: string    
+          x-ngsi:    
+            type: Property    
         jws:    
-          description: Property. Defines the proof value in JWS format    
+          description: Defines the proof value in JWS format    
           type: string    
+          x-ngsi:    
+            type: Property    
         proofPurpose:    
-          description: Property. Defines the purpose of the proof    
+          description: Defines the purpose of the proof    
           type: string    
+          x-ngsi:    
+            type: Property    
         type:    
-          description: Property. Defines the proof type    
+          description: Defines the proof type    
           type: string    
+          x-ngsi:    
+            type: Property    
         verificationMethod:    
-          description: Property. Contains information about the verification method / proof mechanisms    
+          description: Contains information about the verification method / proof mechanisms    
           type: string    
+          x-ngsi:    
+            type: Property    
       required:    
         - type    
         - proofPurpose    
