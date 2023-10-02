@@ -1,3 +1,3 @@
-/* (Beta) Export of data model Presentation of the subject dataModel.VerifiableCredentials for a postgreSQL database. Pending translation of enumerations and multityped attributes */
+/* (Beta) Export of data model Presentation of the subject dataModel.VerifiableCredentials for a PostgreSQL database. Pending translation of enumerations and multityped attributes */
 
-CREATE TABLE Presentation (holder text, proof json, type json, verifiableCredential json);
+CREATE TABLE Presentation (holder TEXT, proof JSON, type JSON, verifiableCredential JSON);
