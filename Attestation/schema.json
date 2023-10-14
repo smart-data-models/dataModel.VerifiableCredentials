@@ -1,5 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://smart-data-models.github.io/dataModel.VerifiableCredentials/Attestation/schema.json",
   "title": "EBSI Verifiable Attestation",
   "description": "Schema of an EBSI Verifiable Attestation",
   "$schemaVersion": "0.0.1",

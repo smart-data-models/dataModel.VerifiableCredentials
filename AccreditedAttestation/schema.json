@@ -2,6 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "EBSI Accredited Verifiable Attestation Record",
     "$schemaVersion": "0.0.1",
+    "$id": "https://smart-data-models.github.io/dataModel.VerifiableCredentials/AccreditedAttestation/schema.json",
     "modelTags": "EBSI, Verifiable Credentials",
     "derivedFrom": "https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-accredited-attestation/2022-11/schema.json",
     "description": "Schema of an EBSI Accredited Verifiable Attestation",

@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "EBSI Natural Person Verifiable ID",
   "description": "Schema of an EBSI Verifiable ID for a natural person",
+  "$id": "https://smart-data-models.github.io/dataModel.VerifiableCredentials/NaturalPerson/schema.json",
   "type": "object",
   "$schemaVersion": "0.0.1",
   "modelTags": "EBSI, Verifiable Credentials",
