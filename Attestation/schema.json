@@ -1,192 +1,145 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://smart-data-models.github.io/dataModel.VerifiableCredentials/Attestation/schema.json",
-  "title": "EBSI Verifiable Attestation",
-  "description": "Schema of an EBSI Verifiable Attestation",
-  "$schemaVersion": "0.0.1",
-  "modelTags": "EBSI, Verifiable Credentials",
-  "derivedFrom": "https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-attestation/2022-11/schema.json",
-  "license": "https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+  "$schemaVersion": "0.3.4",
+  "modelTags": "IUDX",
+  "$id": "https://smart-data-models.github.io/dataModel.Weather/WeatherObserved/schema.json",
+  "title": "Weather Observed schema - Smart Data Models",
+  "description": "An observation of weather conditions at a certain place and time. This data model has been developed in cooperation with mobile operators and the GSMA.",
   "type": "object",
-  "properties": {
-    "id": {
-      "description": "Property. Defines unique identifier of the Verifiable Attestation",
-      "type": "string",
-      "format": "uri"
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
     },
-    "type": {
-      "description": "Property. Defines the Verifiable Credential type",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
-    "issuer": {
-      "description": "Property. Defines the issuer of the Verifiable Attestation",
-      "type": "string",
-      "format": "uri"
+    {
+      "$ref": "https://smart-data-models.github.io/dataModel.Weather/weather-schema.json#/definitions/Weather-Commons"
     },
-    "issuanceDate": {
-      "description": "Property. Defines the date and time, when the Verifiable Attestation becomes valid",
-      "type": "string",
-      "format": "date-time"
-    },
-    "issued": {
-      "description": "Property. Defines when the Verifiable Attestation was issued",
-      "type": "string",
-      "format": "date-time"
-    },
-    "validFrom": {
-      "description": "Property. Defines the date and time, when the Verifiable Attestation becomes valid",
-      "type": "string",
-      "format": "date-time"
-    },
-    "validUntil": {
-      "description": "Property. Defines the date and time, when the Verifiable Attestation expires",
-      "type": "string",
-      "format": "date-time"
-    },
-    "expirationDate": {
-      "description": "Property. Defines the date and time, when the Verifiable Attestation expires",
-      "type": "string",
-      "format": "date-time"
-    },
-    "credentialSubject": {
-      "description": "Property. Defines information about the subject that is described by the Verifiable Attestation",
-      "type": "object",
+    {
       "properties": {
-        "id": {
-          "description": "Property. Defines the DID of the subject that is described by the Verifiable Attestation",
-          "type": "string",
-          "format": "uri"
-        }
-      }
-    },
-    "credentialStatus": {
-      "description": "Property. Contains information about how to verify the status of the Verifiable Attestation (via the Revocation and Endorsement Registry, RER)",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity",
-          "type": "string",
-          "format": "uri"
-        },
         "type": {
-          "description": "Property. Defines the Verifiable Credential status type",
-          "type": "string"
-        },
-        "statusPurpose": {
-          "description": "Property. Purpose of the status entry",
           "type": "string",
           "enum": [
-            "revocation",
-            "suspension"
-          ]
+            "WeatherObserved"
+          ],
+          "description": "Property. NGSI Entity type. It has to be WeatherObserved"
         },
-        "statusListIndex": {
-          "description": "Property. Integer expressed as a string. The zero based index value identifies the bit position of the status",
-          "type": "string"
+        "dateObserved": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/dateObserved"
         },
-        "statusListCredential": {
-          "description": "Property. URL referencing the StatusList2021Credential",
-          "type": "string",
-          "format": "uri"
-        }
-      },
-      "required": [
-        "id",
-        "type"
-      ]
-    },
-    "credentialSchema": {
-      "description": "Property. Contains information about the credential schema (template) on which the Verifiable Authorisation is based",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "Property. References the credential schema (template) stored on the (relevant) Trusted Schemas Registry (TSR) on which the Verifiable Authorisation is based",
-          "type": "string",
-          "format": "uri"
+        "precipitation": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Amount of water rain registered. Units:'Liters per square meter'. "
         },
-        "type": {
-          "description": "Property. Defines credential schema type",
-          "type": "string",
-          "enum": [
-            "FullJsonSchemaValidator2021"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "type"
-      ]
-    },
-    "evidence": {
-      "description": "Property. Contains information about the process which resulted in the issuance of the Verifiable Attestation",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "Property. If present, it MUST contain a URL that points to where more information about this instance of evidence can be found.",
-            "type": "string"
-          },
-          "type": {
-            "description": "Property. Defines the evidence type",
-            "type": "array",
-            "items": {
-              "type": "string"
+        "solarRadiation": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. The solar radiation observed measured in Watts per square. Units:'w/m2'"
+        },
+        "directIrradiation": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Direct irradiance is the part of the solar irradiance that directly reaches a surface. Units:'w/m2'"
+        },
+        "diffuseIrradiation": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Diffuse irradiance is the part of the solar irradiance that is scattered by the atmosphere. Units:'w/m2'"
+        },
+        "pressureTendency": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "falling",
+                "raising",
+                "steady"
+              ]
+            },
+            {
+              "type": "number"
             }
-          }
+          ],
+          "description": "Property. Enum:'falling, raising, steady'. Is the pressure rising or falling? It can be expressed in quantitative terms or qualitative terms"
         },
-        "required": [
-          "id",
-          "type"
-        ]
-      }
-    },
-    "proof": {
-      "description": "Property. Contains information about the proof",
-      "type": "object",
-      "properties": {
-        "type": {
-          "description": "Property. Defines the proof type",
-          "type": "string"
+        "dewPoint": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Units:'Celsius degrees'. The dew point encoded as a number. Observed temperature to which air must be cooled to become saturated with water vapor"
         },
-        "proofPurpose": {
-          "description": "Property. Defines the purpose of the proof",
-          "type": "string"
+        "refDevice": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. A reference to the device(s) which captured this observation"
         },
-        "created": {
-          "description": "Property. Defines the date and time, when the proof has been created",
+        "streamGauge": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. The water level surface elevation observed by Hydrometric measurement sensors, namely a [Stream Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in centimeters. Units:'centimeters'"
+        },
+        "snowHeight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. The snow height observed by generic snow depth measurement sensors, expressed in centimeters. Units:'centimeters'"
+        },
+        "uVIndexMax": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. The maximum UV index for the period, based on the World Health Organization's UV Index measure. [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/) the values between 1 and 11 are the valid range for the index. The value 0 is for describing that no signal is detected so no value is stored"
+        },
+        "aqiMajorPollutant": {
           "type": "string",
-          "format": "date-time"
+          "description": "Property. Model:'https://schema.org/Text'. Major pollutant in the Air Quality Index (AQI)"
         },
-        "verificationMethod": {
-          "description": "Property. Contains information about the verification method / proof mechanisms",
-          "type": "string"
+        "aqiMajorPollutantForecast": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Forecasted major air pollutant in the Air Quality Index (AQI) over a certain duration in future"
         },
-        "jws": {
-          "description": "Property. Defines the proof value in JWS format",
-          "type": "string"
+        "airTemperatureForecast": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Forecasted value of air temperature over a certain duration in future"
+        },
+        "precipitationForecast": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Forecasted rainfall over a certain duration in future"
+        },
+        "airQualityIndex": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Air quality index is a number used to report the quality of the air on any given day"
+        },
+        "relativeHumidityForecast": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Forecasted relative humidity (water vapour in air) over a certain duration in future"
+        },
+        "airQualityIndexForecast": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Forecasted overall Air Quality Index (AQI) over a certain duration in future"
+        },
+        "airTemperatureTSA": {
+          "type": "object",
+          "description": "Property. Air temperature time series aggregation",
+          "$ref": "https://smart-data-models.github.io/dataModel.Environment/Environment-schema.json#/definitions/TimeSeriesAggregation"
         }
-      },
-      "required": [
-        "type",
-        "proofPurpose",
-        "created",
-        "verificationMethod",
-        "jws"
-      ]
+      }
     }
-  },
+  ],
   "required": [
     "id",
     "type",
-    "issuer",
-    "issuanceDate",
-    "issued",
-    "validFrom",
-    "credentialSubject",
-    "credentialSchema"
+    "dateObserved",
+    "location"
   ]
 }
