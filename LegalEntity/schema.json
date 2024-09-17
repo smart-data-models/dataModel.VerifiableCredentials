@@ -1,145 +1,107 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$schemaVersion": "0.3.4",
-  "modelTags": "IUDX",
-  "$id": "https://smart-data-models.github.io/dataModel.Weather/WeatherObserved/schema.json",
-  "title": "Weather Observed schema - Smart Data Models",
-  "description": "An observation of weather conditions at a certain place and time. This data model has been developed in cooperation with mobile operators and the GSMA.",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.VerifiableCredentials/LegalEntity/schema.json",
+  "modelTags": "EBSI, Verifiable Credentials",
+  "title": "EBSI Legal Entity Verifiable ID",
+  "description": "Schema of an EBSI Verifiable ID for a legal entity",
   "type": "object",
+  "derivedFrom": "https://ec.europa.eu/digital-building-blocks/code/projects/EBSI/repos/json-schema/browse/schemas/ebsi-vid/legal-entity/2022-11/schema.json",
+  "license": "https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12",
+  "required": [
+    "credentialSubject"
+  ],
   "allOf": [
     {
-      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
-    },
-    {
-      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
-    },
-    {
-      "$ref": "https://smart-data-models.github.io/dataModel.Weather/weather-schema.json#/definitions/Weather-Commons"
+      "$ref": "https://raw.githubusercontent.com/smart-data-models/dataModel.VerifiableCredentials/master/VerifiableCredentials-schema.json"
     },
     {
       "properties": {
         "type": {
-          "type": "string",
-          "enum": [
-            "WeatherObserved"
-          ],
-          "description": "Property. NGSI Entity type. It has to be WeatherObserved"
+          "description": "Property. Defines the Verifiable Credential type",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
-        "dateObserved": {
-          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/dateObserved"
-        },
-        "precipitation": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. Amount of water rain registered. Units:'Liters per square meter'. "
-        },
-        "solarRadiation": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. The solar radiation observed measured in Watts per square. Units:'w/m2'"
-        },
-        "directIrradiation": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. Direct irradiance is the part of the solar irradiance that directly reaches a surface. Units:'w/m2'"
-        },
-        "diffuseIrradiation": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. Diffuse irradiance is the part of the solar irradiance that is scattered by the atmosphere. Units:'w/m2'"
-        },
-        "pressureTendency": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "falling",
-                "raising",
-                "steady"
-              ]
-            },
-            {
-              "type": "number"
-            }
-          ],
-          "description": "Property. Enum:'falling, raising, steady'. Is the pressure rising or falling? It can be expressed in quantitative terms or qualitative terms"
-        },
-        "dewPoint": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Units:'Celsius degrees'. The dew point encoded as a number. Observed temperature to which air must be cooled to become saturated with water vapor"
-        },
-        "refDevice": {
-          "anyOf": [
-            {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 256,
-              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
-              "description": "Property. Identifier format of any NGSI entity"
-            },
-            {
-              "type": "string",
-              "format": "uri",
-              "description": "Property. Identifier format of any NGSI entity"
-            }
-          ],
-          "description": "Relationship. Model:'https://schema.org/URL'. A reference to the device(s) which captured this observation"
-        },
-        "streamGauge": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. The water level surface elevation observed by Hydrometric measurement sensors, namely a [Stream Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in centimeters. Units:'centimeters'"
-        },
-        "snowHeight": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. The snow height observed by generic snow depth measurement sensors, expressed in centimeters. Units:'centimeters'"
-        },
-        "uVIndexMax": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Property. Model:'https://schema.org/Number'. The maximum UV index for the period, based on the World Health Organization's UV Index measure. [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/) the values between 1 and 11 are the valid range for the index. The value 0 is for describing that no signal is detected so no value is stored"
-        },
-        "aqiMajorPollutant": {
-          "type": "string",
-          "description": "Property. Model:'https://schema.org/Text'. Major pollutant in the Air Quality Index (AQI)"
-        },
-        "aqiMajorPollutantForecast": {
-          "type": "string",
-          "description": "Property. Model:'https://schema.org/Text'. Forecasted major air pollutant in the Air Quality Index (AQI) over a certain duration in future"
-        },
-        "airTemperatureForecast": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Forecasted value of air temperature over a certain duration in future"
-        },
-        "precipitationForecast": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Forecasted rainfall over a certain duration in future"
-        },
-        "airQualityIndex": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Air quality index is a number used to report the quality of the air on any given day"
-        },
-        "relativeHumidityForecast": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Forecasted relative humidity (water vapour in air) over a certain duration in future"
-        },
-        "airQualityIndexForecast": {
-          "type": "number",
-          "description": "Property. Model:'https://schema.org/Number'. Forecasted overall Air Quality Index (AQI) over a certain duration in future"
-        },
-        "airTemperatureTSA": {
+        "credentialSubject": {
+          "description": "Property. Defines information about the subject that is described by the Verifiable ID",
           "type": "object",
-          "description": "Property. Air temperature time series aggregation",
-          "$ref": "https://smart-data-models.github.io/dataModel.Environment/Environment-schema.json#/definitions/TimeSeriesAggregation"
+          "properties": {
+            "id": {
+              "description": "Property. Defines the DID of the subject that is described by the Verifiable Attestation",
+              "type": "string",
+              "format": "uri"
+            },
+            "identifier": {
+              "type": "array",
+              "description": "Property. Description to be completed",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "schemeID": {
+                    "type": "string",
+                    "description": "Property. Description to be completed"
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "Property. Description to be completed"
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Property. Description to be completed"
+                  }
+                }
+              }
+            },
+            "legalPersonIdentifier": {
+              "description": "Property. National/Legal Identifier of Credential Subject (constructed by the sending Member State in accordance with the technical specifications for the purposes of cross-border identification and which is as persistent as possible in time)",
+              "type": "string"
+            },
+            "legalName": {
+              "description": "Property. Official legal name of Credential Subject",
+              "type": "string"
+            },
+            "legalAddress": {
+              "description": "Property. Official legal address of Credential Subject",
+              "type": "string"
+            },
+            "VATRegistration": {
+              "description": "Property. VAT number  of Credential Subject",
+              "type": "string"
+            },
+            "taxReference": {
+              "description": "Property. Official tax reference number of Credential Subject",
+              "type": "string"
+            },
+            "LEI": {
+              "description": "Property. Official legal entity identifier (LEI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1247/2012)",
+              "type": "string"
+            },
+            "EORI": {
+              "description": "Property. Economic Operator Registration and Identification (EORI) of Credential Subject (referred to in Commission Implementing Regulation (EU) No 1352/2013)",
+              "type": "string"
+            },
+            "SEED": {
+              "description": "Property. System for Exchange of Excise Data (SEED) of Credential Subject (i.e. excise number provided in Article 2(12) of Council Regulation (EC) No 389/2012)",
+              "type": "string"
+            },
+            "SIC": {
+              "description": "Property. Standard Industrial Classification (SIC) of Credential Subject (Article 3(1) of Directive 2009/101/EC of the European Parliament and of the Council.)",
+              "type": "string"
+            },
+            "domainName": {
+              "description": "Property. Domain name  of Credential Subject",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "legalName"
+          ]
         }
       }
     }
-  ],
-  "required": [
-    "id",
-    "type",
-    "dateObserved",
-    "location"
   ]
 }
