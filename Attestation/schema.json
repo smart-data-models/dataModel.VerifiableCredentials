@@ -67,7 +67,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "description": "Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation’s validity",
+          "description": "Property. References record in the Revocation and Endorsement Registry (RER) to enable verification of a Verifiable Attestation\u2019s validity",
           "type": "string",
           "format": "uri"
         },
