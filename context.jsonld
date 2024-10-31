@@ -52,7 +52,7 @@
         "type": "@type",
         "validFrom": "https://smartdatamodels.org/validFrom",
         "validUntil": "https://smartdatamodels.org/dataModel.VerifiableCredentials/validUntil",
-        "value": "ngsi-ld:hasValue",
+        "value": "https://uri.etsi.org/ngsi-ld/hasValue",
         "verifiableCredential": "https://smartdatamodels.org/dataModel.VerifiableCredentials/verifiableCredential",
         "verificationMethod": "https://smartdatamodels.org/dataModel.VerifiableCredentials/verificationMethod"
     }
